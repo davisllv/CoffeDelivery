@@ -2,14 +2,17 @@ import { MapPin, ShoppingCart } from "@phosphor-icons/react";
 import CoffeLogo from "../../../assets/coffe-logo.svg";
 import { HeaderButtons, HeaderContainer } from "./styles";
 import { NavLink } from "react-router-dom";
+import { useTomTomGeolocation } from "../../../data/hooks/useGeolocalization";
 export const Header = () => {
+  const { city, state } = useTomTomGeolocation();
+  console.log(city, state);
   return (
     <HeaderContainer>
       <img src={CoffeLogo} />
       <HeaderButtons>
         <span>
           <MapPin size={22} weight="fill" />
-          Caxias do Sul - RS
+          {city} - {state}
         </span>
 
         <NavLink to="/cart" title="Shopping Cart">
