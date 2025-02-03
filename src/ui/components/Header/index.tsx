@@ -5,7 +5,6 @@ import { NavLink } from "react-router-dom";
 import { useTomTomGeolocation } from "../../../data/hooks/useGeolocalization";
 export const Header = () => {
   const { city, state } = useTomTomGeolocation();
-  console.log(city, state);
   return (
     <HeaderContainer>
       <img src={CoffeLogo} />
