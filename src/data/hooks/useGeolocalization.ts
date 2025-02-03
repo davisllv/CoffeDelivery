@@ -10,7 +10,6 @@ export const useTomTomGeolocation = () => {
     const locationValues = localStorage.getItem(
       "@ignite-coffe-delivery:location-values-1-0-1"
     );
-    console.log(locationValues);
     if (!locationValues)
       return {
         city: "",
@@ -19,7 +18,6 @@ export const useTomTomGeolocation = () => {
       };
 
     const parsedValues = JSON.parse(locationValues);
-    console.log(parsedValues);
     return {
       ...parsedValues,
     };
