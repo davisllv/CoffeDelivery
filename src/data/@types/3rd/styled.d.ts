@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 import "styled-components";
 import { defaultTheme } from "../../../ui/styles/themes/default";
 
-type ThemeType = keyof typeof defaultTheme;
+type ThemeType = typeof defaultTheme;
 
 declare module "styled-components" {
-  export type DefaultTheme = ThemeType;
+  export interface DefaultTheme extends ThemeType {}
 }
