@@ -49,12 +49,12 @@ export const HomeIcons = () => {
     <IconsContainer>
       {IconsValues.map((icon) => {
         return (
-          <p>
-            <IconContainer colorIcon={icon.colorIcon}>
+          <div key={icon.iconType} className="icons-boxes">
+            <IconContainer $colorIcon={icon.colorIcon}>
               {getIcon(icon.iconType)}
             </IconContainer>
             <span>{icon.text}</span>
-          </p>
+          </div>
         );
       })}
     </IconsContainer>

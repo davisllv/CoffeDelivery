@@ -7,7 +7,7 @@ const COLOR_ICON = {
 };
 
 interface IIconContainerProps {
-  colorIcon: keyof typeof COLOR_ICON;
+  $colorIcon: keyof typeof COLOR_ICON;
 }
 
 export const IconsContainer = styled.div`
@@ -17,7 +17,7 @@ export const IconsContainer = styled.div`
 
   row-gap: 1.25rem;
 
-  p {
+  .icons-boxes {
     display: flex;
     align-items: center;
 
@@ -36,6 +36,6 @@ export const IconContainer = styled.div<IIconContainerProps>`
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  background-color: ${(props) => props.theme[COLOR_ICON[props.colorIcon]]};
+  background-color: ${(props) => props.theme[COLOR_ICON[props.$colorIcon]]};
   color: ${(props) => props.theme.background};
 `;

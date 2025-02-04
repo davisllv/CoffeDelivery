@@ -18,12 +18,13 @@ export const HomeCards = () => {
     if (coffe.special) {
       tagComponent.push(<span key="special">Especial</span>);
     } else {
-      tagComponent.push(<span>Tradicional</span>);
+      tagComponent.push(<span key="tradicional">Tradicional</span>);
     }
 
-    if (coffe.alcoholic) tagComponent.push(<span>Alcoólico</span>);
-    if (coffe.cold) tagComponent.push(<span>Gelado</span>);
-    if (coffe.hasMilk) tagComponent.push(<span>Com Leite</span>);
+    if (coffe.alcoholic)
+      tagComponent.push(<span key="alcoholic">Alcoólico</span>);
+    if (coffe.cold) tagComponent.push(<span key="cold">Gelado</span>);
+    if (coffe.hasMilk) tagComponent.push(<span key="milk">Com Leite</span>);
 
     return tagComponent;
   }
@@ -31,7 +32,7 @@ export const HomeCards = () => {
     <CardGrid>
       {MockData.map((coffe) => {
         return (
-          <CardContainer>
+          <CardContainer key={coffe.id}>
             <CardImageContainer>
               <img src={coffe.imagem} alt="" />
               <CardTagContainer>{getTagComponent(coffe)}</CardTagContainer>
