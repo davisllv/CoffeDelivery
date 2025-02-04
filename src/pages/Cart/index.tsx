@@ -15,6 +15,8 @@ import {
   ListShopContainer,
 } from "./styles";
 import { ButtonCountDown } from "../../ui/components/ButtonCountDown";
+import { DisplayGrid } from "../../ui/components/Display/Grid/styles";
+import { InputContainer } from "../../ui/components/InputContainer";
 
 export const Cart = () => {
   return (
@@ -31,14 +33,20 @@ export const Cart = () => {
               </div>
             </ContainerText>
 
-            <div className="form-container-inputs">
-              <input placeholder="CEP" type="string" />
-              <input placeholder="Rua" type="string" />
-              <input placeholder="Número" type="number" />
-              <input placeholder="Complemento" type="string" />
-              <input placeholder="Bairro" type="string" />
-              <input placeholder="UF" type="string" />
-            </div>
+            <DisplayGrid>
+              <InputContainer size={4} placeholder="CEP" type="string" />
+              <InputContainer size={12} placeholder="Rua" type="string" />
+              <InputContainer size={4} placeholder="Número" type="number" />
+              <InputContainer
+                size={8}
+                placeholder="Complemento"
+                type="string"
+                required={false}
+              />
+              <InputContainer size={4} placeholder="Bairro" type="string" />
+              <InputContainer size={6} placeholder="Cidade" type="string" />
+              <InputContainer size={2} placeholder="UF" type="string" />
+            </DisplayGrid>
           </FormContainerValues>
 
           <FormContainerValues>
@@ -112,6 +120,25 @@ export const Cart = () => {
               <p className="coffe-values">R$ 9,90</p>
             </div>
           </div>
+
+          <div className="coffe-all-values">
+            <div className="coffe-all-values-description">
+              <p className="value-description">Total dos Itens</p>
+              <span>R$ 29,20</span>
+            </div>
+
+            <div className="coffe-all-values-description">
+              <p className="value-description">Entrega</p>
+              <span>R$ 3,50</span>
+            </div>
+
+            <div className="coffe-all-values-description total">
+              <h3>Total</h3>
+              <span>R$ 33,20</span>
+            </div>
+          </div>
+
+          <button className="coffe-confirm-button">Confirmar Pedido</button>
         </ListShopContainer>
       </CardContainer>
     </MainContainer>
