@@ -17,7 +17,10 @@ export const Header = () => {
         </span>
 
         <NavLink to="/cart" title="Shopping Cart">
-          <ShoppingCart size={22} weight="fill" />
+          <div className="shopping-cart-link">
+            <span className="shopping-cart-amount">1</span>
+            <ShoppingCart size={22} weight="fill" />
+          </div>
         </NavLink>
       </HeaderButtons>
     </HeaderContainer>

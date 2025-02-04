@@ -207,6 +207,8 @@ export const ListShopContainer = styled(BaseContainerCard)`
     font-size: 0.875rem;
     line-height: 1.6;
 
+    cursor: pointer;
+
     &:hover {
       background: ${(props) => props.theme["yellow-dark"]};
     }
