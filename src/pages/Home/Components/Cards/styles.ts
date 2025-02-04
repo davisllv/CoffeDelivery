@@ -55,13 +55,14 @@ export const CardTextsContainer = styled.div`
 
   margin-top: 1rem;
 
-  h3 {
+  .coffe-name {
     color: ${(props) => props.theme["base-subtitle"]};
     font-family: "Baloo 2", sans-serif;
     font-size: 1.25rem;
     font-weight: bold;
   }
-  span {
+
+  .coffe-description {
     color: ${(props) => props.theme["base-label"]};
     font-size: 0.875rem;
   }
@@ -110,33 +111,5 @@ export const CardInputGroupContainer = styled.div`
     &:hover {
       background: ${(props) => props.theme.purple};
     }
-  }
-`;
-
-export const ButtonCountDownElements = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0.5rem;
-
-  border-radius: 6px;
-
-  background: ${(props) => props.theme["base-button"]};
-
-  button {
-    cursor: pointer;
-    border: 0;
-    padding: 0;
-    background: transparent;
-    color: ${(props) => props.theme.purple};
-
-    &:hover {
-      font-weight: bold;
-      color: ${(props) => props.theme["purple-dark"]};
-    }
-  }
-
-  span {
-    color: ${(props) => props.theme["base-title"]};
   }
 `;

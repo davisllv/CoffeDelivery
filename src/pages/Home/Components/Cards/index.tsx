@@ -1,6 +1,6 @@
 import { IMockData, MockData } from "../../../../assets/mock/coffeMockedShop";
+import { ButtonCountDown } from "../../../../ui/components/ButtonCountDown";
 import {
-  ButtonCountDownElements,
   CardButtonContainers,
   CardContainer,
   CardGrid,
@@ -9,7 +9,7 @@ import {
   CardTagContainer,
   CardTextsContainer,
 } from "./styles";
-import { Minus, Plus, ShoppingCart } from "@phosphor-icons/react";
+import { ShoppingCart } from "@phosphor-icons/react";
 
 export const HomeCards = () => {
   function getTagComponent(coffe: IMockData) {
@@ -38,8 +38,8 @@ export const HomeCards = () => {
               <CardTagContainer>{getTagComponent(coffe)}</CardTagContainer>
             </CardImageContainer>
             <CardTextsContainer>
-              <h3>{coffe.nome}</h3>
-              <span>{coffe.descricao}</span>
+              <h3 className="coffe-name">{coffe.nome}</h3>
+              <span className="coffe-description">{coffe.descricao}</span>
             </CardTextsContainer>
 
             <CardButtonContainers>
@@ -48,16 +48,7 @@ export const HomeCards = () => {
                 9,90
               </p>
               <CardInputGroupContainer>
-                <ButtonCountDownElements>
-                  <button>
-                    <Minus />
-                  </button>
-
-                  <span>{1}</span>
-                  <button>
-                    <Plus />
-                  </button>
-                </ButtonCountDownElements>
+                <ButtonCountDown />
                 <button type="button" className="shopping-button">
                   <ShoppingCart size={22} weight="fill" />
                 </button>

@@ -7,7 +7,9 @@ export const Header = () => {
   const { city, state } = useTomTomGeolocation();
   return (
     <HeaderContainer>
-      <img src={CoffeLogo} />
+      <NavLink to="/">
+        <img src={CoffeLogo} />
+      </NavLink>
       <HeaderButtons>
         <span>
           <MapPin size={22} weight="fill" />
