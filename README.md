@@ -1,50 +1,110 @@
-# React + TypeScript + Vite
+☕ Coffee Delivery
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Aplicação para gerenciar um carrinho de compras de uma cafeteria fictícia.
 
-Currently, two official plugins are available:
+![Coffee Delivery](https://via.placeholder.com/1000x500?text=Coffee+Delivery)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Sobre o Desafio
 
-## Expanding the ESLint configuration
+Este projeto foi desenvolvido para gerenciar um carrinho de compras de uma cafeteria fictícia, permitindo ao usuário:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+✅ Listar produtos (cafés) disponíveis para compra
+✅ Adicionar uma quantidade específica de itens no carrinho
+✅ Aumentar ou remover a quantidade de itens no carrinho
+✅ Preencher um formulário de endereço para entrega
+✅ Exibir o total de itens no carrinho no Header
+✅ Calcular o valor total do carrinho automaticamente
 
-- Configure the top-level `parserOptions` property like this:
+## 🛠️ Tecnologias Utilizadas
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+O projeto foi desenvolvido utilizando as seguintes tecnologias:
+
+- ⚡ **[Vite](https://vitejs.dev/)** - Ambiente de desenvolvimento rápido para React
+- 🟦 **[TypeScript](https://www.typescriptlang.org/)** - Superset do JavaScript
+- 🎨 **[Styled-Components](https://styled-components.com/)** - Estilização utilizando CSS-in-JS
+- 🌍 **[Axios](https://axios-http.com/)** - Cliente HTTP para requisições
+- 🌎 **Geolocalização** - API para obter a localização do usuário com base no CEP
+- 🏗️ **Context API** - Gerenciamento de estado global
+- 📌 **React Hook Form + Zod** - Validação e gerenciamento de formulários
+
+## 📦 Instalação e Execução
+
+1. **Clone o repositório**
+
+```sh
+  git clone https://github.com/seu-usuario/coffee-delivery.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. **Acesse a pasta do projeto**
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```sh
+  cd coffee-delivery
 ```
+
+3. **Instale as dependências**
+
+```sh
+  npm install
+  # ou
+  yarn install
+```
+
+4. **Execute o projeto**
+
+```sh
+  npm run dev
+  # ou
+  yarn dev
+```
+
+5. **Acesse no navegador**
+
+```
+http://localhost:5173
+```
+
+## 📸 Layout da Aplicação
+
+O layout da aplicação foi baseado no design disponibilizado no Figma.
+
+🔗 **[Acesse o layout no Figma](https://www.figma.com/file/5yT9ZzZmRQRS4yivGGB3pl/Coffee-Delivery/duplicate)**
+
+## 📚 Conceitos Utilizados
+
+✔️ Estados e imutabilidade
+✔️ Context API para gerenciamento global de estados
+✔️ LocalStorage para persistência de dados
+✔️ Métodos de array como `reduce` para cálculos
+✔️ Rotas utilizando `react-router-dom`
+✔️ Formulários com `react-hook-form` e `zod`
+
+## 📌 Dependências Principais
+
+```json
+{
+  "@hookform/resolvers": "^3.10.0",
+  "@phosphor-icons/react": "^2.1.7",
+  "axios": "^1.7.9",
+  "immer": "^10.1.1",
+  "react": "^18.3.1",
+  "react-dom": "^18.3.1",
+  "react-hook-form": "^7.54.2",
+  "react-router-dom": "^7.1.5",
+  "styled-components": "^6.1.14",
+  "zod": "^3.24.1"
+}
+```
+
+## 🛠️ Melhorias Futuras
+
+🚀 Implementação de um sistema de pagamento
+🚀 Dark Mode
+🚀 Melhorias na responsividade
+
+## 📜 Licença
+
+Este projeto está sob a licença MIT. Sinta-se à vontade para explorar, modificar e contribuir! 🧑‍💻✨
+
+---
+
+💙 **Desenvolvido por [Seu Nome](https://github.com/seu-usuario)**
