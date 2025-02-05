@@ -2,7 +2,7 @@
 
 > Aplicação para gerenciar um carrinho de compras de uma cafeteria fictícia.
 
-![Coffee Delivery](https://via.placeholder.com/1000x500?text=Coffee+Delivery)
+![Coffee Delivery](images/coffe_delivery.png)
 
 ## 🚀 Sobre o Desafio
 
