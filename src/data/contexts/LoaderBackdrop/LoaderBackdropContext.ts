@@ -2,7 +2,7 @@ import { createContext, useContext } from "react";
 
 interface ILoadingContextType {
   isLoading: boolean;
-  setLoading: () => void;
+  setLoading: (loading: boolean) => void;
 }
 
 export const LoadingContext = createContext<ILoadingContextType>(

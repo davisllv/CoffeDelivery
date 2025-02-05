@@ -22,8 +22,10 @@ import { CoffeContext } from "../../data/contexts/CoffeShop/CoffeShopContext";
 import { ValuesCoffeCart } from "./Values";
 import { Button } from "../../ui/components/Button";
 import { useLoading } from "../../data/contexts/LoaderBackdrop/LoaderBackdropContext";
+import { useNavigate } from "react-router-dom";
 
 export const Cart = () => {
+  const navigate = useNavigate();
   const {
     shoppingCartCoffes,
     coffeTotalPrice,
@@ -33,6 +35,21 @@ export const Cart = () => {
   } = useContext(CoffeContext);
 
   const { setLoading } = useLoading();
+
+  const handleSubmitOrder = async () => {
+    setLoading(true);
+    try {
+      // Simulate a delay for the payment process
+      // await new Promise((resolve) => setTimeout(resolve, 3000));
+      navigate("/confirmed-order");
+    } catch (error) {
+      // Handle the payment error
+      console.error("Payment failed:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <MainContainer>
       <CardContainer>
@@ -145,7 +162,10 @@ export const Cart = () => {
             />
           </CoffeValuesMain>
 
-          <button className="coffe-confirm-button" onClick={() => setLoading()}>
+          <button
+            className="coffe-confirm-button"
+            onClick={() => handleSubmitOrder()}
+          >
             Confirmar Pedido
           </button>
         </ListShopContainer>

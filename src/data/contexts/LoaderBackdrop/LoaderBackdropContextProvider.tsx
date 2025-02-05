@@ -12,7 +12,7 @@ export const LoadingProvider = ({ children }: ICoffeContextProviderProps) => {
 
   const value = {
     isLoading,
-    setLoading: () => setLoading(),
+    setLoading: (loading: boolean) => setLoading(loading),
   };
 
   return (

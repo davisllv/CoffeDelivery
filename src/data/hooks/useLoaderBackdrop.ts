@@ -1,17 +1,10 @@
 import { useState } from "react";
 
-export const useLoaderBackdrop = (duration = 2000) => {
+export const useLoaderBackdrop = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const showLoadingEffect = () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, duration);
-  };
-
-  const setLoading = () => {
-    showLoadingEffect();
+  const setLoading = (loading: boolean) => {
+    setIsLoading(loading);
   };
 
   return { isLoading, setLoading };
