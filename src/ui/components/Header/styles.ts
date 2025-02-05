@@ -44,7 +44,7 @@ export const HeaderButtons = styled.div`
       justify-content: center;
       text-align: center;
       border-radius: 50%;
-      font-size: 0.875rem;
+      font-size: 0.75rem;
       font-weight: bold;
       color: ${(props) => props.theme.white};
       background: ${(props) => props.theme["yellow-dark"]};

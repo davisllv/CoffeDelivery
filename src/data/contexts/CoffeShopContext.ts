@@ -8,6 +8,7 @@ interface ICoffeContextType {
   decrementCoffeAmount(id: number): void;
 
   shoppingCartCoffes: IShoppingCartCoffes[];
+  coffeTotalAmount: number;
   addCoffeeToCart(coffe: IMockData): void;
 }
 

@@ -14,8 +14,14 @@ import { useContext } from "react";
 import { CoffeContext } from "../../../../data/contexts/CoffeShopContext";
 
 export const HomeCards = () => {
-  const { coffees, decrementCoffeAmount, incremmentCoffeAmount } =
-    useContext(CoffeContext);
+  const {
+    coffees,
+    decrementCoffeAmount,
+    incremmentCoffeAmount,
+    coffeTotalAmount,
+    shoppingCartCoffes,
+    addCoffeeToCart,
+  } = useContext(CoffeContext);
   function getTagComponent(coffe: IMockData) {
     const tagComponent: JSX.Element[] = [];
 
@@ -32,9 +38,10 @@ export const HomeCards = () => {
 
     return tagComponent;
   }
-
-  function handleInsertCoffeCart(coffeId: number) {
-    console.log(`Adicionando ${coffeId} ao carrinho.`);
+  console.log(coffeTotalAmount);
+  console.log(shoppingCartCoffes);
+  function handleInsertCoffeCart(coffe: IMockData) {
+    addCoffeeToCart(coffe);
   }
 
   function handleIncrement(coffeId: number) {
@@ -62,7 +69,9 @@ export const HomeCards = () => {
             <CardButtonContainers>
               <p>
                 <span>R$ </span>
-                9,90
+                {coffe.price.toLocaleString("pt-BR", {
+                  minimumFractionDigits: 2,
+                })}
               </p>
               <CardInputGroupContainer>
                 <ButtonCountDown
@@ -73,7 +82,7 @@ export const HomeCards = () => {
                 <button
                   type="button"
                   className="shopping-button"
-                  onClick={() => handleInsertCoffeCart(coffe.id)}
+                  onClick={() => handleInsertCoffeCart(coffe)}
                 >
                   <ShoppingCart size={22} weight="fill" />
                 </button>

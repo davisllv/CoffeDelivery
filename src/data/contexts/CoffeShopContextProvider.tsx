@@ -19,7 +19,7 @@ export function CoffeContextProvider({ children }: ICoffeContextProviderProps) {
     selectedCoffeId: 0,
   });
 
-  const [{ shoppingCartCoffes }, dispatchSoppingCart] = useReducer(
+  const [{ shoppingCartCoffes, totalAmount }, dispatchSoppingCart] = useReducer(
     ShoppingCartReducers,
     {
       shoppingCartCoffes: [],
@@ -47,7 +47,9 @@ export function CoffeContextProvider({ children }: ICoffeContextProviderProps) {
         coffees,
         incremmentCoffeAmount,
         decrementCoffeAmount,
+
         shoppingCartCoffes,
+        coffeTotalAmount: totalAmount,
         addCoffeeToCart,
       }}
     >

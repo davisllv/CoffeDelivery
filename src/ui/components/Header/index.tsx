@@ -3,8 +3,11 @@ import CoffeLogo from "../../../assets/coffe-logo.svg";
 import { HeaderButtons, HeaderContainer } from "./styles";
 import { NavLink } from "react-router-dom";
 import { useTomTomGeolocation } from "../../../data/hooks/useGeolocalization";
+import { useContext } from "react";
+import { CoffeContext } from "../../../data/contexts/CoffeShopContext";
 export const Header = () => {
   const { city, state } = useTomTomGeolocation();
+  const { coffeTotalAmount } = useContext(CoffeContext);
   return (
     <HeaderContainer>
       <NavLink to="/">
@@ -18,7 +21,9 @@ export const Header = () => {
 
         <NavLink to="/cart" title="Shopping Cart">
           <div className="shopping-cart-link">
-            <span className="shopping-cart-amount">1</span>
+            {coffeTotalAmount > 0 && (
+              <span className="shopping-cart-amount">{coffeTotalAmount}</span>
+            )}
             <ShoppingCart size={22} weight="fill" />
           </div>
         </NavLink>
