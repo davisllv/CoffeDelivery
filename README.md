@@ -95,16 +95,10 @@ O layout da aplicação foi baseado no design disponibilizado no Figma.
 }
 ```
 
-## 🛠️ Melhorias Futuras
-
-🚀 Implementação de um sistema de pagamento
-🚀 Dark Mode
-🚀 Melhorias na responsividade
-
 ## 📜 Licença
 
 Este projeto está sob a licença MIT. Sinta-se à vontade para explorar, modificar e contribuir! 🧑‍💻✨
 
 ---
 
-💙 **Desenvolvido por [Seu Nome](https://github.com/seu-usuario)**
+💙 **Desenvolvido por [Davi da Silva](https://github.com/davisllv)**
