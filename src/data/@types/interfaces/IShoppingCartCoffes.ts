@@ -1,8 +1,8 @@
-export interface IShoppingCartCoffe {
+export interface IShoppingCartCoffes {
   id: string;
   coffeId: number;
   image: string;
   name: string;
   quantity: number;
-  value: number;
+  price: number;
 }
