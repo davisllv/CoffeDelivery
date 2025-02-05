@@ -80,7 +80,8 @@ export const useTomTomGeolocation = () => {
   }, []);
 
   useEffect(() => {
-    if (!location) callbackGetCurrentPosition();
+    console.log(location);
+    if (!location.city) callbackGetCurrentPosition();
   }, [callbackGetCurrentPosition, location]);
 
   return location;
