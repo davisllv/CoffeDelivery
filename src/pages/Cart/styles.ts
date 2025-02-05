@@ -151,6 +151,11 @@ export const ListShopContainer = styled(BaseContainerCard)`
 
               color: ${(props) => props.theme["base-text"]};
               font-size: 0.75rem;
+              cursor: pointer;
+
+              &:hover {
+                background: ${(props) => props.theme["base-hover"]};
+              }
 
               svg {
                 color: ${(props) => props.theme.purple};

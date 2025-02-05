@@ -51,6 +51,8 @@ export function ShoppingCartReducers(state: IShoppingCartStates, action: any) {
 
       return produce(state, (draft) => {
         draft.shoppingCartCoffes[findedIndex].quantity++;
+        draft.totalPrice = calculateTotalPrice(draft.shoppingCartCoffes);
+        draft.totalAmount = calculateTotalAmount(draft.shoppingCartCoffes);
       });
     }
     case ActionTypesEnum.DECREMENT_COFFE_CART: {
@@ -61,6 +63,8 @@ export function ShoppingCartReducers(state: IShoppingCartStates, action: any) {
       return produce(state, (draft) => {
         if (draft.shoppingCartCoffes[findedIndex].quantity <= 1) return;
         draft.shoppingCartCoffes[findedIndex].quantity--;
+        draft.totalPrice = calculateTotalPrice(draft.shoppingCartCoffes);
+        draft.totalAmount = calculateTotalAmount(draft.shoppingCartCoffes);
       });
     }
     default:
