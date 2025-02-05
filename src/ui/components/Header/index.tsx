@@ -4,7 +4,7 @@ import { HeaderButtons, HeaderContainer } from "./styles";
 import { NavLink } from "react-router-dom";
 import { useTomTomGeolocation } from "../../../data/hooks/useGeolocalization";
 import { useContext } from "react";
-import { CoffeContext } from "../../../data/contexts/CoffeShopContext";
+import { CoffeContext } from "../../../data/contexts/CoffeShop/CoffeShopContext";
 export const Header = () => {
   const { city, state } = useTomTomGeolocation();
   const { coffeTotalAmount } = useContext(CoffeContext);

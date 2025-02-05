@@ -18,8 +18,10 @@ import { ButtonCountDown } from "../../ui/components/ButtonCountDown";
 import { DisplayGrid } from "../../ui/components/Display/Grid/styles";
 import { InputContainer } from "../../ui/components/InputContainer";
 import { useContext } from "react";
-import { CoffeContext } from "../../data/contexts/CoffeShopContext";
+import { CoffeContext } from "../../data/contexts/CoffeShop/CoffeShopContext";
 import { ValuesCoffeCart } from "./Values";
+import { Button } from "../../ui/components/Button";
+import { useLoading } from "../../data/contexts/LoaderBackdrop/LoaderBackdropContext";
 
 export const Cart = () => {
   const {
@@ -27,7 +29,10 @@ export const Cart = () => {
     coffeTotalPrice,
     incrementCoffeToCart,
     decrementCoffeToCart,
+    removeCoffeeFromCart,
   } = useContext(CoffeContext);
+
+  const { setLoading } = useLoading();
   return (
     <MainContainer>
       <CardContainer>
@@ -104,10 +109,13 @@ export const Cart = () => {
                           onDecrement={() => decrementCoffeToCart(coffe.id)}
                           onIncrement={() => incrementCoffeToCart(coffe.id)}
                         />
-                        <button>
-                          <Trash size={16} />
+
+                        <Button
+                          onClick={() => removeCoffeeFromCart(coffe.id)}
+                          icon={<Trash size={16} />}
+                        >
                           Remover
-                        </button>
+                        </Button>
                       </div>
                     </div>
                   </div>
@@ -137,7 +145,9 @@ export const Cart = () => {
             />
           </CoffeValuesMain>
 
-          <button className="coffe-confirm-button">Confirmar Pedido</button>
+          <button className="coffe-confirm-button" onClick={() => setLoading()}>
+            Confirmar Pedido
+          </button>
         </ListShopContainer>
       </CardContainer>
     </MainContainer>

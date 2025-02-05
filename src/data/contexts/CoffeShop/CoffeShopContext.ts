@@ -1,6 +1,6 @@
 import { createContext } from "react";
-import { IMockData } from "../../assets/mock/coffeMockedShop";
-import { IShoppingCartCoffes } from "../@types/interfaces/IShoppingCartCoffes";
+import { IMockData } from "../../../assets/mock/coffeMockedShop";
+import { IShoppingCartCoffes } from "../../@types/interfaces/IShoppingCartCoffes";
 
 interface ICoffeContextType {
   coffees: IMockData[];
@@ -11,6 +11,7 @@ interface ICoffeContextType {
   coffeTotalAmount: number;
   coffeTotalPrice: number;
   addCoffeeToCart(coffe: IMockData): void;
+  removeCoffeeFromCart(coffeCartId: string): void;
 
   incrementCoffeToCart(coffeCartId: string): void;
   decrementCoffeToCart(coffeCartId: string): void;

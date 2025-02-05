@@ -11,7 +11,7 @@ import {
 } from "./styles";
 import { ShoppingCart } from "@phosphor-icons/react";
 import { useContext } from "react";
-import { CoffeContext } from "../../../../data/contexts/CoffeShopContext";
+import { CoffeContext } from "../../../../data/contexts/CoffeShop/CoffeShopContext";
 
 export const HomeCards = () => {
   const {

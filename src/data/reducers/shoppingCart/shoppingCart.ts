@@ -44,6 +44,15 @@ export function ShoppingCartReducers(state: IShoppingCartStates, action: any) {
         draft.totalAmount = calculateTotalAmount(draft.shoppingCartCoffes);
       });
     }
+    case ActionTypesEnum.REMOVE_COFFE_CART: {
+      return produce(state, (draft) => {
+        draft.shoppingCartCoffes = draft.shoppingCartCoffes.filter(
+          (coffe) => coffe.id !== action.payload.coffeCartId
+        );
+        draft.totalPrice = calculateTotalPrice(draft.shoppingCartCoffes);
+        draft.totalAmount = calculateTotalAmount(draft.shoppingCartCoffes);
+      });
+    }
     case ActionTypesEnum.INCREMENT_COFFE_CART: {
       const findedIndex = state.shoppingCartCoffes.findIndex(
         (coffe) => coffe.id === action.payload.coffeCartId

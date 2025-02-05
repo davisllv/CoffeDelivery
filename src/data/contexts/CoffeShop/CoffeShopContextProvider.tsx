@@ -1,17 +1,18 @@
 import { ReactNode, useReducer } from "react";
-import { IMockData, MockData } from "../../assets/mock/coffeMockedShop";
-import { CoffeReducers } from "../reducers/coffe/coffes";
+import { IMockData, MockData } from "../../../assets/mock/coffeMockedShop";
+import { CoffeReducers } from "../../reducers/coffe/coffes";
 import {
   decremmentCoffeAmountAction,
   incremmentCoffeAmountAction,
-} from "../reducers/coffe/actions";
+} from "../../reducers/coffe/actions";
 import { CoffeContext } from "./CoffeShopContext";
-import { ShoppingCartReducers } from "../reducers/shoppingCart/shoppingCart";
+import { ShoppingCartReducers } from "../../reducers/shoppingCart/shoppingCart";
 import {
   addCoffeToCartAction,
   decrementCoffeToCartAction,
   incrementCoffeToCartAction,
-} from "../reducers/shoppingCart/actionts";
+  removeCoffeeFromCartAction,
+} from "../../reducers/shoppingCart/actionts";
 
 interface ICoffeContextProviderProps {
   children: ReactNode;
@@ -53,6 +54,10 @@ export function CoffeContextProvider({ children }: ICoffeContextProviderProps) {
     dispatchSoppingCart(addCoffeToCartAction(coffe));
   }
 
+  function removeCoffeeFromCart(coffeCartId: string) {
+    dispatchSoppingCart(removeCoffeeFromCartAction(coffeCartId));
+  }
+
   return (
     <CoffeContext.Provider
       value={{
@@ -66,6 +71,7 @@ export function CoffeContextProvider({ children }: ICoffeContextProviderProps) {
         decrementCoffeToCart,
         incrementCoffeToCart,
         addCoffeeToCart,
+        removeCoffeeFromCart,
       }}
     >
       {children}
