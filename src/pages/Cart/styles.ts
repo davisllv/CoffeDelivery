@@ -178,24 +178,6 @@ export const ListShopContainer = styled(BaseContainerCard)`
     flex-direction: column;
     gap: 0.75rem;
     margin-bottom: 1.5rem;
-
-    .coffe-all-values-description {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      color: ${(props) => props.theme["base-text"]};
-
-      .value-description {
-        font-size: 0.875rem;
-      }
-    }
-
-    .total {
-      font-size: 1.25rem;
-      color: ${(props) => props.theme["base-subtitle"]};
-      font-weight: bold;
-    }
   }
 
   .coffe-confirm-button {
@@ -213,6 +195,13 @@ export const ListShopContainer = styled(BaseContainerCard)`
       background: ${(props) => props.theme["yellow-dark"]};
     }
   }
+`;
+
+export const CoffeValuesMain = styled.main`
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
 `;
 
 export const InfoShopContainer = styled.div``;

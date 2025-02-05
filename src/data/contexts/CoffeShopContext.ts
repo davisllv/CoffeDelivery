@@ -9,7 +9,11 @@ interface ICoffeContextType {
 
   shoppingCartCoffes: IShoppingCartCoffes[];
   coffeTotalAmount: number;
+  coffeTotalPrice: number;
   addCoffeeToCart(coffe: IMockData): void;
+
+  incrementCoffeToCart(coffeCartId: string): void;
+  decrementCoffeToCart(coffeCartId: string): void;
 }
 
 export const CoffeContext = createContext<ICoffeContextType>(

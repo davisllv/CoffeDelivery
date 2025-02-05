@@ -7,7 +7,11 @@ import {
 } from "../reducers/coffe/actions";
 import { CoffeContext } from "./CoffeShopContext";
 import { ShoppingCartReducers } from "../reducers/shoppingCart/shoppingCart";
-import { addCoffeToCartAction } from "../reducers/shoppingCart/actionts";
+import {
+  addCoffeToCartAction,
+  decrementCoffeToCartAction,
+  incrementCoffeToCartAction,
+} from "../reducers/shoppingCart/actionts";
 
 interface ICoffeContextProviderProps {
   children: ReactNode;
@@ -19,15 +23,13 @@ export function CoffeContextProvider({ children }: ICoffeContextProviderProps) {
     selectedCoffeId: 0,
   });
 
-  const [{ shoppingCartCoffes, totalAmount }, dispatchSoppingCart] = useReducer(
-    ShoppingCartReducers,
-    {
+  const [{ shoppingCartCoffes, totalAmount, totalPrice }, dispatchSoppingCart] =
+    useReducer(ShoppingCartReducers, {
       shoppingCartCoffes: [],
       totalPrice: 0,
       totalAmount: 0,
       coffeId: 0,
-    }
-  );
+    });
 
   function incremmentCoffeAmount(coffeId: number) {
     dispatch(incremmentCoffeAmountAction(coffeId));
@@ -35,6 +37,16 @@ export function CoffeContextProvider({ children }: ICoffeContextProviderProps) {
 
   function decrementCoffeAmount(coffeId: number) {
     dispatch(decremmentCoffeAmountAction(coffeId));
+  }
+
+  /* COFFE CART - SECTION */
+
+  function incrementCoffeToCart(coffeCartId: string) {
+    dispatchSoppingCart(incrementCoffeToCartAction(coffeCartId));
+  }
+
+  function decrementCoffeToCart(coffeCartId: string) {
+    dispatchSoppingCart(decrementCoffeToCartAction(coffeCartId));
   }
 
   function addCoffeeToCart(coffe: IMockData) {
@@ -50,6 +62,9 @@ export function CoffeContextProvider({ children }: ICoffeContextProviderProps) {
 
         shoppingCartCoffes,
         coffeTotalAmount: totalAmount,
+        coffeTotalPrice: totalPrice,
+        decrementCoffeToCart,
+        incrementCoffeToCart,
         addCoffeeToCart,
       }}
     >

@@ -1,4 +1,3 @@
-import AmericanCoffe from "../../assets/coffes/american-coffe.svg";
 import {
   Bank,
   CreditCard,
@@ -13,12 +12,22 @@ import {
   FormContainerValues,
   MainContainer,
   ListShopContainer,
+  CoffeValuesMain,
 } from "./styles";
 import { ButtonCountDown } from "../../ui/components/ButtonCountDown";
 import { DisplayGrid } from "../../ui/components/Display/Grid/styles";
 import { InputContainer } from "../../ui/components/InputContainer";
+import { useContext } from "react";
+import { CoffeContext } from "../../data/contexts/CoffeShopContext";
+import { ValuesCoffeCart } from "./Values";
 
 export const Cart = () => {
+  const {
+    shoppingCartCoffes,
+    coffeTotalPrice,
+    incrementCoffeToCart,
+    decrementCoffeToCart,
+  } = useContext(CoffeContext);
   return (
     <MainContainer>
       <CardContainer>
@@ -80,63 +89,53 @@ export const Cart = () => {
       <CardContainer>
         <h2>Cafés selecionados</h2>
         <ListShopContainer>
-          <div className="coffe-item">
-            <div className="coffe-info-container">
-              <div className="coffe-description">
-                <img src={AmericanCoffe} />
+          {shoppingCartCoffes.map((coffe) => {
+            return (
+              <div className="coffe-item">
+                <div className="coffe-info-container">
+                  <div className="coffe-description">
+                    <img src={coffe.image} />
 
-                <div className="coffe-information">
-                  <p>Expresso Tradicional</p>
-                  <div className="coffe-actions-buttons">
-                    <ButtonCountDown />
-                    <button>
-                      <Trash size={16} />
-                      Remover
-                    </button>
+                    <div className="coffe-information">
+                      <p>{coffe.name}</p>
+                      <div className="coffe-actions-buttons">
+                        <ButtonCountDown
+                          count={coffe.quantity}
+                          onDecrement={() => decrementCoffeToCart(coffe.id)}
+                          onIncrement={() => incrementCoffeToCart(coffe.id)}
+                        />
+                        <button>
+                          <Trash size={16} />
+                          Remover
+                        </button>
+                      </div>
+                    </div>
                   </div>
+
+                  <p className="coffe-values">
+                    R${" "}
+                    {coffe.price.toLocaleString("pt-br", {
+                      minimumFractionDigits: 0,
+                    })}
+                  </p>
                 </div>
               </div>
+            );
+          })}
 
-              <p className="coffe-values">R$ 9,90</p>
-            </div>
-          </div>
-          <div className="coffe-item">
-            <div className="coffe-info-container">
-              <div className="coffe-description">
-                <img src={AmericanCoffe} />
+          <CoffeValuesMain>
+            <ValuesCoffeCart
+              description="Total dos Itens"
+              value={coffeTotalPrice}
+            />
+            <ValuesCoffeCart description="Entrega" value={3.5} />
 
-                <div className="coffe-information">
-                  <p>Expresso Tradicional</p>
-                  <div className="coffe-actions-buttons">
-                    <ButtonCountDown />
-                    <button>
-                      <Trash size={16} />
-                      Remover
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <p className="coffe-values">R$ 9,90</p>
-            </div>
-          </div>
-
-          <div className="coffe-all-values">
-            <div className="coffe-all-values-description">
-              <p className="value-description">Total dos Itens</p>
-              <span>R$ 29,20</span>
-            </div>
-
-            <div className="coffe-all-values-description">
-              <p className="value-description">Entrega</p>
-              <span>R$ 3,50</span>
-            </div>
-
-            <div className="coffe-all-values-description total">
-              <h3>Total</h3>
-              <span>R$ 33,20</span>
-            </div>
-          </div>
+            <ValuesCoffeCart
+              description="Total"
+              value={coffeTotalPrice}
+              isTotal
+            />
+          </CoffeValuesMain>
 
           <button className="coffe-confirm-button">Confirmar Pedido</button>
         </ListShopContainer>
