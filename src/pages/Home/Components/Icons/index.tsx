@@ -1,11 +1,6 @@
-import { Clock, Coffee, Package, ShoppingCart } from "@phosphor-icons/react";
-import { IconContainer, IconsContainer } from "./styles";
-
-interface IIconsProps {
-  text: string;
-  colorIcon: "yellowDark" | "text" | "yellow" | "purple";
-  iconType: "ShoppingCart" | "Clock" | "Coffee" | "Package";
-}
+import { IconsPages } from "../../../../ui/components/IconsPages";
+import { IIconsProps } from "../../../../data/@types/interfaces/IIconsProps";
+import { IconsGridColumns } from "../../../../ui/components/IconsPages/styles";
 
 const IconsValues: IIconsProps[] = [
   {
@@ -31,32 +26,9 @@ const IconsValues: IIconsProps[] = [
 ];
 
 export const HomeIcons = () => {
-  function getIcon(iconName: string): React.ReactElement {
-    switch (iconName) {
-      case "ShoppingCart":
-        return <ShoppingCart size={16} weight="fill" />;
-      case "Clock":
-        return <Clock size={16} weight="fill" />;
-      case "Coffee":
-        return <Coffee size={16} weight="fill" />;
-      case "Package":
-        return <Package size={16} weight="fill" />;
-      default:
-        return <ShoppingCart size={16} weight="fill" />;
-    }
-  }
   return (
-    <IconsContainer>
-      {IconsValues.map((icon) => {
-        return (
-          <div key={icon.iconType} className="icons-boxes">
-            <IconContainer $colorIcon={icon.colorIcon}>
-              {getIcon(icon.iconType)}
-            </IconContainer>
-            <span>{icon.text}</span>
-          </div>
-        );
-      })}
-    </IconsContainer>
+    <IconsGridColumns>
+      <IconsPages iconsValues={IconsValues} />
+    </IconsGridColumns>
   );
 };

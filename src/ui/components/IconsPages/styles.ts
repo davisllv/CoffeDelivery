@@ -6,14 +6,17 @@ const COLOR_ICON = {
   purple: "purple",
 };
 
+interface IIconGridColumnsProps {
+  $columns?: number;
+}
+
 interface IIconContainerProps {
   $colorIcon: keyof typeof COLOR_ICON;
 }
 
-export const IconsContainer = styled.div`
+export const IconsGridColumns = styled.div<IIconGridColumnsProps>`
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  flex-direction: row;
+  grid-template-columns: repeat(${(props) => props.$columns || 2}, 1fr);
 
   row-gap: 1.25rem;
 
@@ -23,7 +26,7 @@ export const IconsContainer = styled.div`
 
     gap: 0.75rem;
 
-    span {
+    P {
       color: ${(props) => props.theme["base-text"]};
     }
   }
