@@ -16,196 +16,211 @@ import IceCoffee from "../coffes/ice-coffee.svg";
 export const MockData = [
   {
     id: 1,
-    nome: "Arábe",
-    nomeIngles: "arabian-coffee",
-    descricao:
+    name: "Arábe",
+    description:
       "Café arábico tradicional, conhecido por seu sabor forte e aroma intenso, preparado com grãos finamente moídos.",
-    imagem: ArabianCoffee,
-    quantitity: 1,
+    image: ArabianCoffee,
+    quantity: 1,
+    value: 9.99,
     cold: false,
     hasMilk: false,
     alcoholic: false,
     special: true,
+    price: 10.99,
   },
   {
     id: 2,
-    nome: "Café Cubano",
-    nomeIngles: "cuban-coffee",
-    descricao:
+    name: "Café Cubano",
+    description:
       "Café cubano com rum forte e doce, normalmente feito com café expresso e açúcar granulado.",
-    imagem: CubanCoffee,
-    quantitity: 1,
+    image: CubanCoffee,
+    quantity: 1,
+    value: 12.3,
     cold: true,
     hasMilk: false,
     alcoholic: true,
     special: true,
+    price: 13.5,
   },
   {
     id: 3,
-    nome: "Café Havaiano",
-    nomeIngles: "hawaiian-coffee",
-    descricao:
+    name: "Café Havaiano",
+    description:
       "Café havaiano cultivado nas ilhas, famoso por seu sabor suave e notas frutadas.",
-    imagem: HawaiianCoffee,
-    quantitity: 1,
+    image: HawaiianCoffee,
+    quantity: 1,
+    value: 11.5,
     cold: false,
     hasMilk: false,
     alcoholic: false,
     special: true,
+    price: 12.75,
   },
   {
     id: 4,
-    nome: "Chocolate Quente",
-    nomeIngles: "hot-chocolate",
-    descricao:
+    name: "Chocolate Quente",
+    description:
       "Chocolate quente cremoso feito com leite quente e cacau em pó, perfeito para um dia frio.",
-    imagem: HotChocolate,
-    quantitity: 1,
+    image: HotChocolate,
+    quantity: 1,
+    value: 8.99,
     cold: false,
     hasMilk: true,
     alcoholic: false,
     special: true,
+    price: 9.99,
   },
   {
     id: 5,
-    nome: "Irlandês",
-    nomeIngles: "irish-coffee",
-    descricao:
+    name: "Irlandês",
+    description:
       "Café irlandês feito com café quente, uísque irlandês, açúcar e uma camada de creme por cima.",
-    imagem: IrishCoffee,
-    quantitity: 1,
+    image: IrishCoffee,
+    quantity: 1,
+    value: 10.99,
     cold: false,
     hasMilk: true,
     alcoholic: true,
     special: true,
+    price: 11.99,
   },
   {
     id: 6,
-    nome: "Mochaccino",
-    nomeIngles: "mochaccino-coffee",
-    descricao:
+    name: "Mochaccino",
+    description:
       "Um cappuccino com uma dose de chocolate, misturando café expresso, leite vaporizado e calda de chocolate.",
-    imagem: MocachinoCoffee,
-    quantitity: 1,
+    image: MocachinoCoffee,
+    quantity: 1,
+    value: 9.5,
     cold: false,
     hasMilk: true,
     alcoholic: false,
     special: false,
+    price: 10.75,
   },
   {
     id: 7,
-    nome: "Tradicional",
-    nomeIngles: "american-coffee",
-    descricao:
+    name: "Tradicional",
+    description:
       "Café americano feito com uma dose de expresso e água quente, resultando em um café mais leve.",
-    imagem: AmericanCoffee,
-    quantitity: 1,
+    image: AmericanCoffee,
+    quantity: 1,
+    value: 6.99,
     cold: false,
     hasMilk: false,
     alcoholic: false,
     special: false,
+    price: 7.5,
   },
   {
     id: 8,
-    nome: "Cappuccino",
-    nomeIngles: "cappuccino",
-    descricao:
+    name: "Cappuccino",
+    description:
       "Café clássico italiano feito com uma dose de expresso, leite vaporizado e espuma de leite.",
-    imagem: Cappuccino,
-    quantitity: 1,
+    image: Cappuccino,
+    quantity: 1,
+    value: 8.5,
     cold: false,
     hasMilk: true,
     alcoholic: false,
     special: false,
+    price: 9.5,
   },
   {
     id: 9,
-    nome: "Café com Leite",
-    nomeIngles: "coffee-with-milk",
-    descricao:
+    name: "Café com Leite",
+    description:
       "Café com leite, uma combinação simples e deliciosa de café expresso e leite quente.",
-    imagem: CoffeeWithMilk,
-    quantitity: 1,
+    image: CoffeeWithMilk,
+    quantity: 1,
+    value: 7.99,
     cold: false,
     hasMilk: true,
     alcoholic: false,
     special: false,
+    price: 8.99,
   },
   {
     id: 10,
-    nome: "Expresso",
-    nomeIngles: "expresso",
-    descricao:
+    name: "Expresso",
+    description:
       "Café expresso concentrado, com um sabor intenso e uma camada de crema por cima.",
-    imagem: Espresso,
-    quantitity: 1,
+    image: Espresso,
+    quantity: 1,
+    value: 5.99,
     cold: false,
     hasMilk: true,
     alcoholic: false,
     special: false,
+    price: 6.75,
   },
   {
     id: 11,
-    nome: "Café Gelado",
-    nomeIngles: "ice-coffee",
-    descricao:
+    name: "Café Gelado",
+    description:
       "Café gelado, perfeito para dias quentes, feito com café resfriado e gelo.",
-    imagem: IceCoffee,
-    quantitity: 1,
+    image: IceCoffee,
+    quantity: 1,
+    value: 7.5,
     cold: true,
     hasMilk: false,
     alcoholic: false,
     special: false,
+    price: 8.25,
   },
   {
     id: 12,
-    nome: "Latte",
-    nomeIngles: "latte",
-    descricao:
+    name: "Latte",
+    description:
       "Café latte, feito com uma dose de expresso e bastante leite vaporizado, geralmente com uma fina camada de espuma.",
-    imagem: Latte,
-    quantitity: 1,
+    image: Latte,
+    quantity: 1,
+    value: 8.25,
     cold: false,
     hasMilk: true,
     alcoholic: false,
     special: false,
+    price: 9.0,
   },
   {
     id: 13,
-    nome: "Macchiato",
-    nomeIngles: "macchiato",
-    descricao:
+    name: "Macchiato",
+    description:
       "Café macchiato, uma dose de expresso marcada com um pouco de leite vaporizado.",
-    imagem: Macchiato,
-    quantitity: 1,
+    image: Macchiato,
+    quantity: 1,
+    value: 7.5,
     cold: false,
     hasMilk: true,
     alcoholic: false,
     special: false,
+    price: 8.5,
   },
   {
     id: 14,
-    nome: "Expresso com Leite",
-    nomeIngles: "milk-expresso",
-    descricao:
+    name: "Expresso com Leite",
+    description:
       "Expresso com leite, uma mistura equilibrada de café expresso e leite vaporizado.",
-    imagem: MilkEspresso,
-    quantitity: 1,
+    image: MilkEspresso,
+    quantity: 1,
+    value: 6.99,
     cold: false,
     hasMilk: true,
     alcoholic: false,
     special: false,
+    price: 7.99,
   },
 ];
+
 export interface IMockData {
   id: number;
-  nome: string;
-  nomeIngles: string;
-  descricao: string;
-  imagem: string;
-  quantitity: number;
+  name: string;
+  description: string;
+  image: string;
+  quantity: number;
   cold: boolean;
   hasMilk: boolean;
   alcoholic: boolean;
   special: boolean;
+  price: number;
 }

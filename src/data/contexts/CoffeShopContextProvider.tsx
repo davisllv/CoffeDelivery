@@ -6,6 +6,7 @@ import {
   incremmentCoffeAmountAction,
 } from "../reducers/coffe/actions";
 import { CoffeContext } from "./CoffeShopContext";
+import { ShoppingCartReducers } from "../reducers/shoppingCart/shoppingCart";
 
 interface ICoffeContextProviderProps {
   children: ReactNode;
@@ -16,6 +17,13 @@ export function CoffeContextProvider({ children }: ICoffeContextProviderProps) {
     coffees: MockData,
     selectedCoffeId: 0,
   });
+
+  const [{ shoppingCart }, dispatchSoppingCart] = useReducer(
+    ShoppingCartReducers,
+    {
+      shoppingCart: [],
+    }
+  );
 
   function incremmentCoffeAmount(coffeId: number) {
     dispatch(incremmentCoffeAmountAction(coffeId));

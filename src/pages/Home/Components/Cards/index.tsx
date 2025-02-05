@@ -33,12 +33,16 @@ export const HomeCards = () => {
     return tagComponent;
   }
 
+  function handleInsertCoffeCart(coffeId: number) {
+    console.log(`Adicionando ${coffeId} ao carrinho.`);
+  }
+
   function handleIncrement(coffeId: number) {
-    decrementCoffeAmount(coffeId);
+    incremmentCoffeAmount(coffeId);
   }
 
   function handleDecrement(coffeId: number) {
-    incremmentCoffeAmount(coffeId);
+    decrementCoffeAmount(coffeId);
   }
 
   return (
@@ -47,12 +51,12 @@ export const HomeCards = () => {
         return (
           <CardContainer key={coffe.id}>
             <CardImageContainer>
-              <img src={coffe.imagem} alt="" />
+              <img src={coffe.image} alt="" />
               <CardTagContainer>{getTagComponent(coffe)}</CardTagContainer>
             </CardImageContainer>
             <CardTextsContainer>
-              <h3 className="coffe-name">{coffe.nome}</h3>
-              <span className="coffe-description">{coffe.descricao}</span>
+              <h3 className="coffe-name">{coffe.name}</h3>
+              <span className="coffe-description">{coffe.description}</span>
             </CardTextsContainer>
 
             <CardButtonContainers>
@@ -62,11 +66,15 @@ export const HomeCards = () => {
               </p>
               <CardInputGroupContainer>
                 <ButtonCountDown
-                  count={coffe.quantitity}
+                  count={coffe.quantity}
                   onIncrement={() => handleIncrement(coffe.id)}
                   onDecrement={() => handleDecrement(coffe.id)}
                 />
-                <button type="button" className="shopping-button">
+                <button
+                  type="button"
+                  className="shopping-button"
+                  onClick={() => handleInsertCoffeCart(coffe.id)}
+                >
                   <ShoppingCart size={22} weight="fill" />
                 </button>
               </CardInputGroupContainer>

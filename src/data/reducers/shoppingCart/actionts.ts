@@ -1,0 +1,4 @@
+export enum ActionTypesEnum {
+  INSERT_COFFEE_CART = "INSERT_COFFEE_CART",
+  UPDATE_COFFE_CART = "UPDATE_COFFE_CART",
+}

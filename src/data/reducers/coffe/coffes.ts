@@ -22,7 +22,7 @@ export function CoffeReducers(state: ICoffesStates, action: ICoffesAction) {
 
       if (findedIndex < 0) return state;
       return produce(state, (draft) => {
-        draft.coffees[findedIndex].quantitity++;
+        draft.coffees[findedIndex].quantity++;
       });
     }
 
@@ -33,8 +33,8 @@ export function CoffeReducers(state: ICoffesStates, action: ICoffesAction) {
 
       if (findedIndex < 0) return state;
       return produce(state, (draft) => {
-        if (draft.coffees[findedIndex].quantitity <= 1) return;
-        draft.coffees[findedIndex].quantitity--;
+        if (draft.coffees[findedIndex].quantity <= 1) return;
+        draft.coffees[findedIndex].quantity--;
       });
     }
 
