@@ -1,15 +1,25 @@
 import { Minus, Plus } from "@phosphor-icons/react";
 import { ButtonCountDownElements } from "./styles";
 
-export const ButtonCountDown = () => {
+interface IButtonCountDownProps {
+  count: number;
+  onIncrement: () => void;
+  onDecrement: () => void;
+}
+
+export const ButtonCountDown = ({
+  count,
+  onDecrement,
+  onIncrement,
+}: IButtonCountDownProps) => {
   return (
     <ButtonCountDownElements>
-      <button>
+      <button onClick={onDecrement}>
         <Minus />
       </button>
 
-      <span>{1}</span>
-      <button>
+      <span>{count}</span>
+      <button onClick={onIncrement}>
         <Plus />
       </button>
     </ButtonCountDownElements>

@@ -21,6 +21,7 @@ export const MockData = [
     descricao:
       "Café arábico tradicional, conhecido por seu sabor forte e aroma intenso, preparado com grãos finamente moídos.",
     imagem: ArabianCoffee,
+    quantitity: 1,
     cold: false,
     hasMilk: false,
     alcoholic: false,
@@ -33,6 +34,7 @@ export const MockData = [
     descricao:
       "Café cubano com rum forte e doce, normalmente feito com café expresso e açúcar granulado.",
     imagem: CubanCoffee,
+    quantitity: 1,
     cold: true,
     hasMilk: false,
     alcoholic: true,
@@ -45,6 +47,7 @@ export const MockData = [
     descricao:
       "Café havaiano cultivado nas ilhas, famoso por seu sabor suave e notas frutadas.",
     imagem: HawaiianCoffee,
+    quantitity: 1,
     cold: false,
     hasMilk: false,
     alcoholic: false,
@@ -57,6 +60,7 @@ export const MockData = [
     descricao:
       "Chocolate quente cremoso feito com leite quente e cacau em pó, perfeito para um dia frio.",
     imagem: HotChocolate,
+    quantitity: 1,
     cold: false,
     hasMilk: true,
     alcoholic: false,
@@ -69,6 +73,7 @@ export const MockData = [
     descricao:
       "Café irlandês feito com café quente, uísque irlandês, açúcar e uma camada de creme por cima.",
     imagem: IrishCoffee,
+    quantitity: 1,
     cold: false,
     hasMilk: true,
     alcoholic: true,
@@ -81,6 +86,7 @@ export const MockData = [
     descricao:
       "Um cappuccino com uma dose de chocolate, misturando café expresso, leite vaporizado e calda de chocolate.",
     imagem: MocachinoCoffee,
+    quantitity: 1,
     cold: false,
     hasMilk: true,
     alcoholic: false,
@@ -93,6 +99,7 @@ export const MockData = [
     descricao:
       "Café americano feito com uma dose de expresso e água quente, resultando em um café mais leve.",
     imagem: AmericanCoffee,
+    quantitity: 1,
     cold: false,
     hasMilk: false,
     alcoholic: false,
@@ -105,6 +112,7 @@ export const MockData = [
     descricao:
       "Café clássico italiano feito com uma dose de expresso, leite vaporizado e espuma de leite.",
     imagem: Cappuccino,
+    quantitity: 1,
     cold: false,
     hasMilk: true,
     alcoholic: false,
@@ -117,6 +125,7 @@ export const MockData = [
     descricao:
       "Café com leite, uma combinação simples e deliciosa de café expresso e leite quente.",
     imagem: CoffeeWithMilk,
+    quantitity: 1,
     cold: false,
     hasMilk: true,
     alcoholic: false,
@@ -129,6 +138,7 @@ export const MockData = [
     descricao:
       "Café expresso concentrado, com um sabor intenso e uma camada de crema por cima.",
     imagem: Espresso,
+    quantitity: 1,
     cold: false,
     hasMilk: true,
     alcoholic: false,
@@ -141,6 +151,7 @@ export const MockData = [
     descricao:
       "Café gelado, perfeito para dias quentes, feito com café resfriado e gelo.",
     imagem: IceCoffee,
+    quantitity: 1,
     cold: true,
     hasMilk: false,
     alcoholic: false,
@@ -153,6 +164,7 @@ export const MockData = [
     descricao:
       "Café latte, feito com uma dose de expresso e bastante leite vaporizado, geralmente com uma fina camada de espuma.",
     imagem: Latte,
+    quantitity: 1,
     cold: false,
     hasMilk: true,
     alcoholic: false,
@@ -165,6 +177,7 @@ export const MockData = [
     descricao:
       "Café macchiato, uma dose de expresso marcada com um pouco de leite vaporizado.",
     imagem: Macchiato,
+    quantitity: 1,
     cold: false,
     hasMilk: true,
     alcoholic: false,
@@ -177,6 +190,7 @@ export const MockData = [
     descricao:
       "Expresso com leite, uma mistura equilibrada de café expresso e leite vaporizado.",
     imagem: MilkEspresso,
+    quantitity: 1,
     cold: false,
     hasMilk: true,
     alcoholic: false,
@@ -189,6 +203,7 @@ export interface IMockData {
   nomeIngles: string;
   descricao: string;
   imagem: string;
+  quantitity: number;
   cold: boolean;
   hasMilk: boolean;
   alcoholic: boolean;

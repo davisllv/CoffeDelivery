@@ -1,4 +1,4 @@
-import { IMockData, MockData } from "../../../../assets/mock/coffeMockedShop";
+import { IMockData } from "../../../../assets/mock/coffeMockedShop";
 import { ButtonCountDown } from "../../../../ui/components/ButtonCountDown";
 import {
   CardButtonContainers,
@@ -10,8 +10,12 @@ import {
   CardTextsContainer,
 } from "./styles";
 import { ShoppingCart } from "@phosphor-icons/react";
+import { useContext } from "react";
+import { CoffeContext } from "../../../../data/contexts/CoffeShopContext";
 
 export const HomeCards = () => {
+  const { coffees, decrementCoffeAmount, incremmentCoffeAmount } =
+    useContext(CoffeContext);
   function getTagComponent(coffe: IMockData) {
     const tagComponent: JSX.Element[] = [];
 
@@ -28,9 +32,18 @@ export const HomeCards = () => {
 
     return tagComponent;
   }
+
+  function handleIncrement(coffeId: number) {
+    decrementCoffeAmount(coffeId);
+  }
+
+  function handleDecrement(coffeId: number) {
+    incremmentCoffeAmount(coffeId);
+  }
+
   return (
     <CardGrid>
-      {MockData.map((coffe) => {
+      {coffees.map((coffe) => {
         return (
           <CardContainer key={coffe.id}>
             <CardImageContainer>
@@ -48,7 +61,11 @@ export const HomeCards = () => {
                 9,90
               </p>
               <CardInputGroupContainer>
-                <ButtonCountDown />
+                <ButtonCountDown
+                  count={coffe.quantitity}
+                  onIncrement={() => handleIncrement(coffe.id)}
+                  onDecrement={() => handleDecrement(coffe.id)}
+                />
                 <button type="button" className="shopping-button">
                   <ShoppingCart size={22} weight="fill" />
                 </button>
