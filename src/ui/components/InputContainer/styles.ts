@@ -18,6 +18,15 @@ export const InputMainContainer = styled.div<IInputProps>`
     color: ${(props) => props.theme["base-label"]};
     pointer-events: none; /* Impede que o texto interfira no clique do input */
   }
+
+  .input-error {
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.875rem;
+    color: ${(props) => props.theme.red};
+    pointer-events: none; /* Impede que o texto interfira no clique do input */
+  }
 `;
 
 export const Input = styled.input`

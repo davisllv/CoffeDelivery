@@ -14,7 +14,11 @@ import { useFormContext } from "react-hook-form";
 import { estadosBrasileiros } from "../../../assets/mock/braziliaStates";
 
 export const CartForm = () => {
-  const { register } = useFormContext();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
+  console.log(errors);
   return (
     <FormContainer>
       <FormContainerValues>
@@ -27,28 +31,55 @@ export const CartForm = () => {
         </ContainerText>
 
         <DisplayGrid>
-          <InputCep size={4} placeholder="CEP" type="string" />
+          <InputCep
+            size={10}
+            placeholder="CEP"
+            type="string"
+            {...register("zipCode")}
+          />
 
-          <InputContainer size={12} placeholder="Rua" type="string" />
-          <InputContainer size={4} placeholder="Número" type="number" />
+          <InputContainer
+            size={12}
+            placeholder="Rua"
+            type="string"
+            {...register("street")}
+          />
+          <InputContainer
+            size={4}
+            placeholder="Número"
+            type="number"
+            {...register("houseNumber")}
+          />
           <InputContainer
             size={8}
             placeholder="Complemento"
             type="string"
             required={false}
+            {...register("complement")}
           />
-          <InputContainer size={4} placeholder="Bairro" type="string" />
-          <InputContainer size={6} placeholder="Cidade" type="string" />
+          <InputContainer
+            size={4}
+            placeholder="Bairro"
+            type="string"
+            {...register("neighborhood")}
+          />
+          <InputContainer
+            size={6}
+            placeholder="Cidade"
+            type="string"
+            {...register("city")}
+          />
           <InputContainer
             size={2}
             placeholder="UF"
             type="string"
             list="brazilian-states"
+            {...register("state")}
           />
 
           <datalist id="brazilian-states">
             {estadosBrasileiros.map((state) => {
-              return <option value={state} />;
+              return <option key={state} value={state} />;
             })}
           </datalist>
         </DisplayGrid>

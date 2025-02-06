@@ -4,6 +4,8 @@ interface ILocationProps {
   city: string;
   state: string;
   error: string | null;
+  latitude: number;
+  longitude: number;
 }
 export const useTomTomGeolocation = () => {
   const [location, setLocation] = useState<ILocationProps>(() => {
@@ -15,6 +17,8 @@ export const useTomTomGeolocation = () => {
         city: "",
         state: "",
         error: null,
+        longitude: 0,
+        latitude: 0,
       };
 
     const parsedValues = JSON.parse(locationValues);
@@ -33,9 +37,11 @@ export const useTomTomGeolocation = () => {
     const newLocation: ILocationProps = {
       city,
       state,
+      latitude,
+      longitude,
       error: null,
     };
-    setLocation({ city, state, error: null });
+    setLocation(newLocation);
 
     localStorage.setItem(
       "@ignite-coffe-delivery:location-values-1-0-1",
@@ -48,30 +54,36 @@ export const useTomTomGeolocation = () => {
       navigator.geolocation.getCurrentPosition(
         (position) => fetchPositionData(position),
         (error) => {
+          const defaultValuesError = {
+            city: "",
+            state: "",
+            latitude: 0,
+            longitude: 0,
+          };
           switch (error.code) {
             case error.PERMISSION_DENIED:
               setLocation({
-                city: "",
-                state: "",
+                ...defaultValuesError,
                 error: "Usuário negou a solicitação de Geolocalização.",
               });
               break;
             case error.POSITION_UNAVAILABLE:
               setLocation({
-                city: "",
-                state: "",
+                ...defaultValuesError,
                 error: "As informações de localização não estão disponíveis.",
               });
               break;
             case error.TIMEOUT:
               setLocation({
-                city: "",
-                state: "",
+                ...defaultValuesError,
                 error: "A solicitação para obter a localização expirou.",
               });
               break;
             default:
-              setLocation({ city: "", state: "", error: "Ocorreu um erro." });
+              setLocation({
+                ...defaultValuesError,
+                error: "Ocorreu um erro.",
+              });
               break;
           }
         }
@@ -80,7 +92,6 @@ export const useTomTomGeolocation = () => {
   }, []);
 
   useEffect(() => {
-    console.log(location);
     if (!location.city) callbackGetCurrentPosition();
   }, [callbackGetCurrentPosition, location]);
 

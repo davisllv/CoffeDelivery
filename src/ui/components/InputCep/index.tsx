@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { InputContainer, InputContainerProps } from "../InputContainer";
+import "./styles.css";
 
 export const InputCep = ({ ...rest }: InputContainerProps) => {
   const [cep, setCep] = useState<string>("");

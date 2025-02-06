@@ -14,7 +14,7 @@ export const InputContainer: React.FC<InputContainerProps> = ({
 }) => {
   return (
     <InputMainContainer $size={size}>
-      <Input required={required} {...rest} />
+      <Input {...rest} />
       {!required && <span className="input-extra-text">Opcional</span>}
     </InputMainContainer>
   );

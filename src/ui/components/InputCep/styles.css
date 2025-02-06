@@ -1,0 +1,5 @@
+.cep-input-container {
+  display: grid;
+  position: relative;
+  width: 100%;
+}

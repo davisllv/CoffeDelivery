@@ -1,17 +1,19 @@
 import styled from "styled-components";
 
 export const MainContainer = styled.main`
-  display: flex;
-  gap: 2rem;
+  form {
+    display: flex;
+    gap: 2rem;
 
-  margin-top: 2.5rem;
+    margin-top: 2.5rem;
 
-  h2 {
-    font-family: "Baloo 2", sans-serif;
-    font-size: 1.125rem;
-    font-weight: bold;
-    color: ${(props) => props.theme["base-subtitle"]};
-    margin-bottom: 0.875rem;
+    h2 {
+      font-family: "Baloo 2", sans-serif;
+      font-size: 1.125rem;
+      font-weight: bold;
+      color: ${(props) => props.theme["base-subtitle"]};
+      margin-bottom: 0.875rem;
+    }
   }
 `;
 
