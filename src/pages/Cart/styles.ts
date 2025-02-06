@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const MainContainer = styled.main`
   display: flex;
-  flex-direction: row;
   gap: 2rem;
 
   margin-top: 2.5rem;

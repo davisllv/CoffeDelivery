@@ -1,35 +1,45 @@
-import { Clock, Coffee, Package, ShoppingCart } from "@phosphor-icons/react";
+import {
+  Clock,
+  Coffee,
+  CurrencyDollar,
+  MapPin,
+  Package,
+  ShoppingCart,
+} from "@phosphor-icons/react";
 import { IconContainer } from "./styles";
-import { IIconsProps } from "../../../data/@types/interfaces/IIconsProps";
+import {
+  IconType,
+  IIconsProps,
+} from "../../../data/@types/interfaces/IIconsProps";
 
 interface IIconsPagesProps {
   iconsValues: IIconsProps[];
 }
 
+const iconMap: Record<IconType, React.ReactElement> = {
+  ShoppingCart: <ShoppingCart size={16} weight="fill" />,
+  Clock: <Clock size={16} weight="fill" />,
+  Coffee: <Coffee size={16} weight="fill" />,
+  Package: <Package size={16} weight="fill" />,
+  MapPin: <MapPin size={16} weight="fill" />,
+  CurrencyDollar: <CurrencyDollar size={16} />,
+};
+
 export const IconsPages = ({ iconsValues }: IIconsPagesProps) => {
-  function getIcon(iconName: string): React.ReactElement {
-    switch (iconName) {
-      case "ShoppingCart":
-        return <ShoppingCart size={16} weight="fill" />;
-      case "Clock":
-        return <Clock size={16} weight="fill" />;
-      case "Coffee":
-        return <Coffee size={16} weight="fill" />;
-      case "Package":
-        return <Package size={16} weight="fill" />;
-      default:
-        return <ShoppingCart size={16} weight="fill" />;
-    }
-  }
   return (
     <>
       {iconsValues.map((icon) => {
         return (
           <div key={icon.iconType} className="icons-boxes">
             <IconContainer $colorIcon={icon.colorIcon}>
-              {getIcon(icon.iconType)}
+              {iconMap[icon.iconType]}
             </IconContainer>
-            <p>{icon.text}</p>
+            <div>
+              <p>{icon.text}</p>
+              {icon.aditionalInfo && (
+                <p className="icon-text-aditional">{icon.aditionalInfo}</p>
+              )}
+            </div>
           </div>
         );
       })}

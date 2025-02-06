@@ -26,8 +26,13 @@ export const IconsGridColumns = styled.div<IIconGridColumnsProps>`
 
     gap: 0.75rem;
 
-    P {
+    p {
+      max-width: 354px;
       color: ${(props) => props.theme["base-text"]};
+    }
+
+    .icon-text-aditional {
+      font-weight: bold;
     }
   }
 `;

@@ -1,5 +1,15 @@
+export type IconType =
+  | "ShoppingCart"
+  | "Clock"
+  | "Coffee"
+  | "Package"
+  | "MapPin"
+  | "CurrencyDollar";
+type ColorIcon = "yellowDark" | "text" | "yellow" | "purple";
+
 export interface IIconsProps {
   text: string;
-  colorIcon: "yellowDark" | "text" | "yellow" | "purple";
-  iconType: "ShoppingCart" | "Clock" | "Coffee" | "Package";
+  aditionalInfo?: string;
+  colorIcon: ColorIcon;
+  iconType: IconType;
 }
