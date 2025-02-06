@@ -1,7 +1,8 @@
 import React, { InputHTMLAttributes } from "react";
 import { Input, InputMainContainer } from "./styles";
 
-interface InputContainerProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputContainerProps
+  extends InputHTMLAttributes<HTMLInputElement> {
   size: 1 | 2 | 3 | 4 | 5 | 6 | 8 | 9 | 10 | 12;
   required?: boolean;
 }

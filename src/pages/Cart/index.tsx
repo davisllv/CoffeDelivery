@@ -1,31 +1,26 @@
+import { Trash } from "@phosphor-icons/react";
 import {
-  Bank,
-  CreditCard,
-  CurrencyDollar,
-  MapPinLine,
-  Money,
-  Trash,
-} from "@phosphor-icons/react";
-import {
-  ContainerText,
   CardContainer,
-  FormContainerValues,
   MainContainer,
   ListShopContainer,
   CoffeValuesMain,
 } from "./styles";
 import { ButtonCountDown } from "../../ui/components/ButtonCountDown";
-import { DisplayGrid } from "../../ui/components/Display/Grid/styles";
-import { InputContainer } from "../../ui/components/InputContainer";
 import { useContext } from "react";
 import { CoffeContext } from "../../data/contexts/CoffeShop/CoffeShopContext";
 import { ValuesCoffeCart } from "./Values";
 import { Button } from "../../ui/components/Button";
 import { useLoading } from "../../data/contexts/LoaderBackdrop/LoaderBackdropContext";
 import { useNavigate } from "react-router-dom";
+import { CartForm } from "./CartForm";
+import { FormProvider, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  newCartOrderDetailsFormSchema,
+  NewOrderDetailsFormData,
+} from "./CartForm/schema";
 
 export const Cart = () => {
-  const navigate = useNavigate();
   const {
     shoppingCartCoffes,
     coffeTotalPrice,
@@ -33,8 +28,21 @@ export const Cart = () => {
     decrementCoffeToCart,
     removeCoffeeFromCart,
   } = useContext(CoffeContext);
-
   const { setLoading } = useLoading();
+
+  const navigate = useNavigate();
+  const newOrderForm = useForm<NewOrderDetailsFormData>({
+    resolver: zodResolver(newCartOrderDetailsFormSchema),
+    defaultValues: {
+      city: "",
+      complement: "",
+      houseNumber: undefined,
+      neighborhood: "",
+      state: "",
+      street: "",
+      zipCode: "",
+    },
+  });
 
   const handleSubmitOrder = async () => {
     setLoading(true);
@@ -55,56 +63,9 @@ export const Cart = () => {
       <CardContainer>
         <h2>Complete seu Pedido</h2>
         <form className="form-container">
-          <FormContainerValues>
-            <ContainerText>
-              <MapPinLine className="map-pin-icon" size={22} />
-              <div>
-                <p>Endereço de Entrega</p>
-                <span>Informe o endereço onde deseja receber seu pedido</span>
-              </div>
-            </ContainerText>
-
-            <DisplayGrid>
-              <InputContainer size={4} placeholder="CEP" type="string" />
-              <InputContainer size={12} placeholder="Rua" type="string" />
-              <InputContainer size={4} placeholder="Número" type="number" />
-              <InputContainer
-                size={8}
-                placeholder="Complemento"
-                type="string"
-                required={false}
-              />
-              <InputContainer size={4} placeholder="Bairro" type="string" />
-              <InputContainer size={6} placeholder="Cidade" type="string" />
-              <InputContainer size={2} placeholder="UF" type="string" />
-            </DisplayGrid>
-          </FormContainerValues>
-
-          <FormContainerValues>
-            <ContainerText>
-              <CurrencyDollar className="dollar-icon" size={22} />
-              <div>
-                <p>Pagamento</p>
-                <span>
-                  O pagamento é feito na entrega. Escolha a forma que deseja
-                  pagar
-                </span>
-              </div>
-            </ContainerText>
-
-            <div className="form-container-buttons">
-              <button type="button">
-                <CreditCard size={16} />
-                Cartão de Crédito
-              </button>
-              <button type="button">
-                <Bank size={16} /> Cartão de Débito
-              </button>
-              <button type="button">
-                <Money size={16} /> Dinheiro
-              </button>
-            </div>
-          </FormContainerValues>
+          <FormProvider {...newOrderForm}>
+            <CartForm />
+          </FormProvider>
         </form>
       </CardContainer>
 
