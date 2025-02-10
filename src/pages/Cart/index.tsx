@@ -12,11 +12,12 @@ import { ValuesCoffeCart } from "./Values";
 import { Button } from "../../ui/components/Button";
 import { CartForm } from "./CartForm";
 import { FormProvider, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import {
   newCartOrderDetailsFormSchema,
   NewOrderDetailsFormData,
 } from "./CartForm/schema";
+import { ZodError } from "zod";
+import { getErrorValidation } from "../../data/services/getErrorValidations";
 
 export const Cart = () => {
   const {
@@ -28,11 +29,10 @@ export const Cart = () => {
   } = useContext(CoffeContext);
 
   const newOrderForm = useForm<NewOrderDetailsFormData>({
-    resolver: zodResolver(newCartOrderDetailsFormSchema),
     defaultValues: {
       city: "",
       complement: "",
-      houseNumber: undefined,
+      houseNumber: "0",
       neighborhood: "",
       state: "",
       street: "",
@@ -40,15 +40,17 @@ export const Cart = () => {
     },
   });
 
-  const {
-    handleSubmit,
-    formState: { errors },
-  } = newOrderForm;
-  console.log(errors);
+  const { handleSubmit } = newOrderForm;
+
   const handleSubmitOrder = async (data: NewOrderDetailsFormData) => {
-    // setLoading(true);
-    console.log("data:", data);
-    console.log("erros:", errors);
+    try {
+      console.log(data);
+      data.shoppingCartCoffes = shoppingCartCoffes;
+
+      newCartOrderDetailsFormSchema.parse(data);
+    } catch (error) {
+      if (error instanceof ZodError) getErrorValidation(error);
+    }
   };
 
   return (

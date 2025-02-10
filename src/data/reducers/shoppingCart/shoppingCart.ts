@@ -2,9 +2,10 @@
 import { produce } from "immer";
 import { IShoppingCartCoffes } from "../../@types/interfaces/IShoppingCartCoffes";
 import { ActionTypesEnum } from "./actionts";
+import { NewShoppingCartDetailsFormData } from "../../../pages/Cart/CartForm/schema";
 
 interface IShoppingCartStates {
-  shoppingCartCoffes: IShoppingCartCoffes[];
+  shoppingCartCoffes: NewShoppingCartDetailsFormData[];
   totalPrice: number;
   totalAmount: number;
   coffeId: number;
