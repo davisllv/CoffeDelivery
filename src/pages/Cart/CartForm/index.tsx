@@ -1,10 +1,4 @@
-import {
-  Bank,
-  CreditCard,
-  CurrencyDollar,
-  MapPinLine,
-  Money,
-} from "@phosphor-icons/react";
+import { CurrencyDollar, MapPinLine } from "@phosphor-icons/react";
 import { FormContainer, FormContainerValues } from "./styles";
 import { DisplayGrid } from "../../../ui/components/Display/Grid/styles";
 import { InputContainer } from "../../../ui/components/InputContainer";
@@ -12,13 +6,10 @@ import { ContainerText } from "../styles";
 import { InputCep } from "../../../ui/components/InputCep";
 import { useFormContext } from "react-hook-form";
 import { estadosBrasileiros } from "../../../assets/mock/braziliaStates";
+import { PaymentMethodButton } from "../../../ui/components/PaymentMethodButton";
 
 export const CartForm = () => {
-  const {
-    register,
-    formState: { errors },
-  } = useFormContext();
-  console.log(errors);
+  const { register, control } = useFormContext();
   return (
     <FormContainer>
       <FormContainerValues>
@@ -32,7 +23,7 @@ export const CartForm = () => {
 
         <DisplayGrid>
           <InputCep
-            size={10}
+            size={4}
             placeholder="CEP"
             type="string"
             {...register("zipCode")}
@@ -48,6 +39,7 @@ export const CartForm = () => {
             size={4}
             placeholder="Número"
             type="number"
+            min={0}
             {...register("houseNumber")}
           />
           <InputContainer
@@ -96,18 +88,7 @@ export const CartForm = () => {
           </div>
         </ContainerText>
 
-        <div className="form-container-buttons">
-          <button type="button">
-            <CreditCard size={16} />
-            Cartão de Crédito
-          </button>
-          <button type="button">
-            <Bank size={16} /> Cartão de Débito
-          </button>
-          <button type="button">
-            <Money size={16} /> Dinheiro
-          </button>
-        </div>
+        <PaymentMethodButton control={control} name="paymentMethod" />
       </FormContainerValues>
     </FormContainer>
   );
