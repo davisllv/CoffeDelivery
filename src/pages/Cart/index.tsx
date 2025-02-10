@@ -31,6 +31,8 @@ export const Cart = () => {
     decrementCoffeToCart,
     removeCoffeeFromCart,
     setConfirmedOrderData,
+    shippingPrice,
+    resetCoffesFromCart,
   } = useContext(CoffeContext);
 
   const newOrderForm = useForm<NewOrderDetailsFormData>({
@@ -44,13 +46,13 @@ export const Cart = () => {
       zipCode: "",
     },
   });
-
-  const { handleSubmit } = newOrderForm;
+  const { handleSubmit, reset } = newOrderForm;
 
   const handleSubmitOrder = async (data: NewOrderDetailsFormData) => {
     setLoading(true);
     try {
       data.shoppingCartCoffes = shoppingCartCoffes;
+      data.shippingPrice = shippingPrice;
 
       newCartOrderDetailsFormSchema.parse(data);
 
@@ -58,6 +60,9 @@ export const Cart = () => {
 
       await new Promise((resolve) => setTimeout(resolve, 5000));
       navigate("/confirmed-order");
+
+      reset();
+      resetCoffesFromCart();
     } catch (error) {
       if (error instanceof ZodError) getErrorValidation(error);
     } finally {
@@ -120,7 +125,9 @@ export const Cart = () => {
                 description="Total dos Itens"
                 value={coffeTotalPrice}
               />
-              <ValuesCoffeCart description="Entrega" value={3.5} />
+              {shippingPrice > 0 && (
+                <ValuesCoffeCart description="Entrega" value={shippingPrice} />
+              )}
 
               <ValuesCoffeCart
                 description="Total"

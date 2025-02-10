@@ -1,4 +1,4 @@
-import { CurrencyDollar, MapPinLine } from "@phosphor-icons/react";
+import { Calculator, CurrencyDollar, MapPinLine } from "@phosphor-icons/react";
 import { FormContainer, FormContainerValues } from "./styles";
 import { DisplayGrid } from "../../../ui/components/Display/Grid/styles";
 import { InputContainer } from "../../../ui/components/InputContainer";
@@ -7,9 +7,31 @@ import { InputCep } from "../../../ui/components/InputCep";
 import { useFormContext } from "react-hook-form";
 import { estadosBrasileiros } from "../../../assets/mock/braziliaStates";
 import { PaymentMethodButton } from "../../../ui/components/PaymentMethodButton";
+import { useCalculateShipping } from "../../../data/hooks/useCalculateShipping";
+import { useLoaderBackdrop } from "../../../data/hooks/useLoaderBackdrop";
+import { newCalculatePriceFormData } from "./schema";
+import { getErrorValidation } from "../../../data/services/getErrorValidations";
 
 export const CartForm = () => {
-  const { register, control } = useFormContext();
+  const { setLoading } = useLoaderBackdrop();
+  const { register, control, watch } = useFormContext();
+  const { calculateShipping } = useCalculateShipping();
+
+  const handleCalculateShipping = async () => {
+    setLoading(true);
+    try {
+      const zipCode = watch("zipCode");
+
+      newCalculatePriceFormData.parse(zipCode);
+
+      await calculateShipping(zipCode);
+    } catch (error) {
+      if (error instanceof Error) getErrorValidation(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <FormContainer>
       <FormContainerValues>
@@ -75,6 +97,21 @@ export const CartForm = () => {
             })}
           </datalist>
         </DisplayGrid>
+
+        <ContainerText>
+          <Calculator className="calculator-icon" size={22} />
+          <div>
+            <p>Calcular preço de Entrega</p>
+            <span>Informe o CEP para calcular o frete</span>
+            <button
+              type="button"
+              className="calculate-button"
+              onClick={handleCalculateShipping}
+            >
+              Calcular
+            </button>
+          </div>
+        </ContainerText>
       </FormContainerValues>
 
       <FormContainerValues>

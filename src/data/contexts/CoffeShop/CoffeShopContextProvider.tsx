@@ -11,8 +11,10 @@ import { ShoppingCartReducers } from "../../reducers/shoppingCart/shoppingCart";
 import {
   addCoffeToCartAction,
   decrementCoffeToCartAction,
+  recalculateTotalPriceAction,
   incrementCoffeToCartAction,
   removeCoffeeFromCartAction,
+  resetCoffesFromCartAction,
 } from "../../reducers/shoppingCart/actions";
 import { NewOrderDetailsFormData } from "../../../pages/Cart/CartForm/schema";
 
@@ -23,6 +25,8 @@ interface ICoffeContextProviderProps {
 export function CoffeContextProvider({ children }: ICoffeContextProviderProps) {
   const [confirmedOrderData, setConfirmedOrderData] =
     useState<NewOrderDetailsFormData>({} as NewOrderDetailsFormData);
+  const [shippingPrice, setShippingPrice] = useState(0);
+  const [shippingTime, setShippingTime] = useState(0);
   const [{ coffees }, dispatch] = useReducer(CoffeReducers, {
     coffees: MockData,
     selectedCoffeId: 0,
@@ -66,6 +70,10 @@ export function CoffeContextProvider({ children }: ICoffeContextProviderProps) {
     dispatchSoppingCart(removeCoffeeFromCartAction(coffeCartId));
   }
 
+  function resetCoffesFromCart() {
+    dispatchSoppingCart(resetCoffesFromCartAction());
+  }
+
   return (
     <CoffeContext.Provider
       value={{
@@ -81,10 +89,21 @@ export function CoffeContextProvider({ children }: ICoffeContextProviderProps) {
         incrementCoffeToCart,
         addCoffeeToCart,
         removeCoffeeFromCart,
+        resetCoffesFromCart,
 
         confirmedOrderData,
         setConfirmedOrderData: (data: NewOrderDetailsFormData) => {
           setConfirmedOrderData(data);
+        },
+        shippingPrice,
+        setShippingPrice: (price: number) => {
+          setShippingPrice(price);
+          dispatchSoppingCart(recalculateTotalPriceAction(price));
+        },
+
+        shippingTime,
+        setShippingTime: (time: number) => {
+          setShippingTime(time);
         },
       }}
     >

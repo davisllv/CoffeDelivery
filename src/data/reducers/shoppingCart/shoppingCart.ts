@@ -77,6 +77,18 @@ export function ShoppingCartReducers(state: IShoppingCartStates, action: any) {
         draft.totalAmount = calculateTotalAmount(draft.shoppingCartCoffes);
       });
     }
+    case ActionTypesEnum.INCREASE_TOTAL_PRICE: {
+      return produce(state, (draft) => {
+        draft.totalPrice += action.payload.price;
+      });
+    }
+    case ActionTypesEnum.RESET_COFFE_CART: {
+      return produce(state, (draft) => {
+        draft.shoppingCartCoffes = [];
+        draft.totalPrice = 0;
+        draft.totalAmount = 0;
+      });
+    }
     default:
       return state;
   }

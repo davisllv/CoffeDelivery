@@ -16,12 +16,19 @@ interface ICoffeContextType {
   coffeTotalPrice: number;
   addCoffeeToCart(coffe: IMockData): void;
   removeCoffeeFromCart(coffeCartId: string): void;
+  resetCoffesFromCart(): void;
 
   incrementCoffeToCart(coffeCartId: string): void;
   decrementCoffeToCart(coffeCartId: string): void;
 
   confirmedOrderData: NewOrderDetailsFormData;
   setConfirmedOrderData(data: NewOrderDetailsFormData): void;
+
+  shippingPrice: number;
+  setShippingPrice(shippingPrice: number): void;
+
+  shippingTime: number;
+  setShippingTime(shippingTime: number): void;
 }
 
 export const CoffeContext = createContext<ICoffeContextType>(

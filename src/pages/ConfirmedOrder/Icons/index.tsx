@@ -19,7 +19,7 @@ function getPaymentType(paymentMethod: string): string {
 
 export const ConfirmedOrdersIcons = () => {
   const [iconsValues, setIconsValues] = useState<IIconsProps[]>([]);
-  const { confirmedOrderData } = useContext(CoffeContext);
+  const { confirmedOrderData, shippingTime } = useContext(CoffeContext);
 
   useEffect(() => {
     setIconsValues([
@@ -39,7 +39,7 @@ export const ConfirmedOrdersIcons = () => {
       },
       {
         text: <p>Previsão de entrega</p>,
-        aditionalInfo: "20 min - 30 min",
+        aditionalInfo: `${shippingTime} MIN`,
         colorIcon: "yellow",
         iconType: "Clock",
       },
@@ -50,7 +50,7 @@ export const ConfirmedOrdersIcons = () => {
         iconType: "CurrencyDollar",
       },
     ]);
-  }, [confirmedOrderData]);
+  }, [confirmedOrderData, shippingTime]);
   return (
     <IconsGridColumns $columns={1}>
       <IconsPages iconsValues={iconsValues} />

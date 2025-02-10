@@ -5,6 +5,8 @@ export enum ActionTypesEnum {
   REMOVE_COFFE_CART = "REMOVE_COFFE_CART",
   INCREMENT_COFFE_CART = "INCREMENT_COFFE_CART",
   DECREMENT_COFFE_CART = "DECREMENT_COFFE_CART",
+  INCREASE_TOTAL_PRICE = "INCREASE_TOTAL_PRICE",
+  RESET_COFFE_CART = "RESET_COFFE_CART",
 }
 
 export function addCoffeToCartAction(coffe: IMockData) {
@@ -40,5 +42,20 @@ export function removeCoffeeFromCartAction(coffeCartId: string) {
     payload: {
       coffeCartId,
     },
+  };
+}
+
+export function recalculateTotalPriceAction(price: number) {
+  return {
+    type: ActionTypesEnum.INCREASE_TOTAL_PRICE,
+    payload: {
+      price,
+    },
+  };
+}
+
+export function resetCoffesFromCartAction() {
+  return {
+    type: ActionTypesEnum.RESET_COFFE_CART,
   };
 }

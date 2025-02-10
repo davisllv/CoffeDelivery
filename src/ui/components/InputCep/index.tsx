@@ -6,7 +6,6 @@ export const InputCep = forwardRef<HTMLInputElement, InputContainerProps>(
   ({ onChange, ...rest }: InputContainerProps, ref) => {
     const formatCep = (value: string): string => {
       const numericValue = value.replace(/\D/g, ""); // Remove não numéricos
-
       const truncatedValue = numericValue.slice(0, 8); // Máximo 8 números
 
       if (truncatedValue.length > 5) {

@@ -22,7 +22,7 @@ export const newCartOrderDetailsFormSchema = zod.object({
     .max(9, "CEP não pode ter mais de 8 dígitos")
     .regex(/^\d{5}-?\d{3}$/, "CEP deve estar no formato XXXXX-XXX ou XXXXXXXX"),
   complement: zod.string().optional(),
-  houseNumber: zod.string(),
+  houseNumber: zod.string().min(1, "Número do imóvel é requerido"),
   neighborhood: zod.string().min(1, "Informe um bairro"),
   street: zod.string().min(1, "Informe uma rua"),
   state: zod
@@ -33,7 +33,14 @@ export const newCartOrderDetailsFormSchema = zod.object({
     .array(shoppingCartCoffesSchema)
     .min(1, "Você não adicionou nenhum café ao seu pedido."),
   paymentMethod: zod.string().min(1, "Selecione um tipo de pagamento"),
+  shippingPrice: zod.number().positive("Preço do frete precisa ser calculado"),
 });
+
+export const newCalculatePriceFormData = zod
+  .string()
+  .min(8, "CEP deve ter 8 dígitos")
+  .max(9, "CEP não pode ter mais de 8 dígitos")
+  .regex(/^\d{5}-?\d{3}$/, "CEP deve estar no formato XXXXX-XXX ou XXXXXXXX");
 
 export type NewShoppingCartDetailsFormData = zod.infer<
   typeof shoppingCartCoffesSchema

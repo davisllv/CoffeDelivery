@@ -28,7 +28,8 @@ export const ContainerText = styled.div`
 
   align-items: flex-start;
 
-  .map-pin-icon {
+  .map-pin-icon,
+  .calculator-icon {
     color: ${(props) => props.theme["yellow-dark"]};
   }
 
@@ -44,6 +45,28 @@ export const ContainerText = styled.div`
     span {
       color: ${(props) => props.theme["base-text"]};
       font-size: 0.875rem;
+    }
+  }
+
+  .calculate-button {
+    border: 0;
+    padding: 0.5rem;
+    margin-top: 0.75rem;
+    width: 100%;
+    font-size: 0.875rem;
+
+    background: ${(props) => props.theme["base-button"]};
+    color: ${(props) => props.theme["base-text"]};
+    border-radius: 6px;
+    cursor: pointer;
+
+    &:hover {
+      background: ${(props) => props.theme["base-hover"]};
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
     }
   }
 `;
