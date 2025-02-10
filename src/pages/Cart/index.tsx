@@ -58,9 +58,10 @@ export const Cart = () => {
 
       await new Promise((resolve) => setTimeout(resolve, 5000));
       navigate("/confirmed-order");
-      setLoading(false);
     } catch (error) {
       if (error instanceof ZodError) getErrorValidation(error);
+    } finally {
+      setLoading(false);
     }
   };
 

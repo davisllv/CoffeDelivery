@@ -9,6 +9,7 @@ interface ICoffeContextType {
   coffees: IMockData[];
   incremmentCoffeAmount(id: number): void;
   decrementCoffeAmount(id: number): void;
+  resetCoffesAmount(id: number): void;
 
   shoppingCartCoffes: NewShoppingCartDetailsFormData[];
   coffeTotalAmount: number;

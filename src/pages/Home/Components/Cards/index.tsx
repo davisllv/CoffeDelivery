@@ -18,8 +18,7 @@ export const HomeCards = () => {
     coffees,
     decrementCoffeAmount,
     incremmentCoffeAmount,
-    coffeTotalAmount,
-    shoppingCartCoffes,
+    resetCoffesAmount,
     addCoffeeToCart,
   } = useContext(CoffeContext);
   function getTagComponent(coffe: IMockData) {
@@ -38,10 +37,10 @@ export const HomeCards = () => {
 
     return tagComponent;
   }
-  console.log(coffeTotalAmount);
-  console.log(shoppingCartCoffes);
   function handleInsertCoffeCart(coffe: IMockData) {
     addCoffeeToCart(coffe);
+
+    resetCoffesAmount(coffe.id);
   }
 
   function handleIncrement(coffeId: number) {

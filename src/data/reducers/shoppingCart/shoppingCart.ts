@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { produce } from "immer";
 import { IShoppingCartCoffes } from "../../@types/interfaces/IShoppingCartCoffes";
-import { ActionTypesEnum } from "./actionts";
+import { ActionTypesEnum } from "./actions";
 import { NewShoppingCartDetailsFormData } from "../../../pages/Cart/CartForm/schema";
 
 interface IShoppingCartStates {

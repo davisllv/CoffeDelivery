@@ -4,6 +4,7 @@ import { CoffeReducers } from "../../reducers/coffe/coffes";
 import {
   decremmentCoffeAmountAction,
   incremmentCoffeAmountAction,
+  resetCoffeAmountAction,
 } from "../../reducers/coffe/actions";
 import { CoffeContext } from "./CoffeShopContext";
 import { ShoppingCartReducers } from "../../reducers/shoppingCart/shoppingCart";
@@ -12,7 +13,7 @@ import {
   decrementCoffeToCartAction,
   incrementCoffeToCartAction,
   removeCoffeeFromCartAction,
-} from "../../reducers/shoppingCart/actionts";
+} from "../../reducers/shoppingCart/actions";
 import { NewOrderDetailsFormData } from "../../../pages/Cart/CartForm/schema";
 
 interface ICoffeContextProviderProps {
@@ -43,6 +44,10 @@ export function CoffeContextProvider({ children }: ICoffeContextProviderProps) {
     dispatch(decremmentCoffeAmountAction(coffeId));
   }
 
+  function resetCoffesAmount(coffeId: number) {
+    dispatch(resetCoffeAmountAction(coffeId));
+  }
+
   /* COFFE CART - SECTION */
 
   function incrementCoffeToCart(coffeCartId: string) {
@@ -67,6 +72,7 @@ export function CoffeContextProvider({ children }: ICoffeContextProviderProps) {
         coffees,
         incremmentCoffeAmount,
         decrementCoffeAmount,
+        resetCoffesAmount,
 
         shoppingCartCoffes,
         coffeTotalAmount: totalAmount,

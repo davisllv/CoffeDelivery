@@ -35,7 +35,7 @@ export const IconsPages = ({ iconsValues }: IIconsPagesProps) => {
               {iconMap[icon.iconType]}
             </IconContainer>
             <div>
-              <p>{icon.text}</p>
+              {typeof icon.text === "string" ? <p>{icon.text}</p> : icon.text}
               {icon.aditionalInfo && (
                 <p className="icon-text-aditional">{icon.aditionalInfo}</p>
               )}

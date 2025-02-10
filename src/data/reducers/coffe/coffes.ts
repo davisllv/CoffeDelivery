@@ -37,6 +37,11 @@ export function CoffeReducers(state: ICoffesStates, action: ICoffesAction) {
         draft.coffees[findedIndex].quantity--;
       });
     }
+    case ActionTypesEnum.RESET_COFFE_AMOUNT: {
+      return produce(state, (draft) => {
+        draft.coffees.forEach((coffe) => (coffe.quantity = 1));
+      });
+    }
 
     default:
       return state;

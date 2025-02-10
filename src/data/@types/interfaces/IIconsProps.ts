@@ -8,7 +8,7 @@ export type IconType =
 type ColorIcon = "yellowDark" | "text" | "yellow" | "purple";
 
 export interface IIconsProps {
-  text: string;
+  text: JSX.Element | string;
   aditionalInfo?: string;
   colorIcon: ColorIcon;
   iconType: IconType;
