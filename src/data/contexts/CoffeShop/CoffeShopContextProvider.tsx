@@ -1,4 +1,4 @@
-import { ReactNode, useReducer } from "react";
+import { ReactNode, useReducer, useState } from "react";
 import { IMockData, MockData } from "../../../assets/mock/coffeMockedShop";
 import { CoffeReducers } from "../../reducers/coffe/coffes";
 import {
@@ -13,12 +13,15 @@ import {
   incrementCoffeToCartAction,
   removeCoffeeFromCartAction,
 } from "../../reducers/shoppingCart/actionts";
+import { NewOrderDetailsFormData } from "../../../pages/Cart/CartForm/schema";
 
 interface ICoffeContextProviderProps {
   children: ReactNode;
 }
 
 export function CoffeContextProvider({ children }: ICoffeContextProviderProps) {
+  const [confirmedOrderData, setConfirmedOrderData] =
+    useState<NewOrderDetailsFormData>({} as NewOrderDetailsFormData);
   const [{ coffees }, dispatch] = useReducer(CoffeReducers, {
     coffees: MockData,
     selectedCoffeId: 0,
@@ -72,6 +75,11 @@ export function CoffeContextProvider({ children }: ICoffeContextProviderProps) {
         incrementCoffeToCart,
         addCoffeeToCart,
         removeCoffeeFromCart,
+
+        confirmedOrderData,
+        setConfirmedOrderData: (data: NewOrderDetailsFormData) => {
+          setConfirmedOrderData(data);
+        },
       }}
     >
       {children}

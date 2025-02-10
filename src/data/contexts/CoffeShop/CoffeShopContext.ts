@@ -1,6 +1,9 @@
 import { createContext } from "react";
 import { IMockData } from "../../../assets/mock/coffeMockedShop";
-import { NewShoppingCartDetailsFormData } from "../../../pages/Cart/CartForm/schema";
+import {
+  NewOrderDetailsFormData,
+  NewShoppingCartDetailsFormData,
+} from "../../../pages/Cart/CartForm/schema";
 
 interface ICoffeContextType {
   coffees: IMockData[];
@@ -15,6 +18,9 @@ interface ICoffeContextType {
 
   incrementCoffeToCart(coffeCartId: string): void;
   decrementCoffeToCart(coffeCartId: string): void;
+
+  confirmedOrderData: NewOrderDetailsFormData;
+  setConfirmedOrderData(data: NewOrderDetailsFormData): void;
 }
 
 export const CoffeContext = createContext<ICoffeContextType>(

@@ -1,20 +1,22 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { LoadingContext } from "./LoaderBackdropContext";
 import { LoaderBackdrop } from "../../../ui/layout/LoaderBackdrop/styles";
-import { useLoaderBackdrop } from "../../hooks/useLoaderBackdrop";
 
 interface ICoffeContextProviderProps {
   children: ReactNode;
 }
 
 export const LoadingProvider = ({ children }: ICoffeContextProviderProps) => {
-  const { isLoading, setLoading } = useLoaderBackdrop();
+  const [isLoading, setLoading] = useState(false);
 
   const value = {
     isLoading,
-    setLoading: (loading: boolean) => setLoading(loading),
+    setLoading: (loading: boolean) => {
+      console.log("Setting loading to: ", loading);
+      setLoading(loading);
+    },
   };
-
+  console.log(isLoading);
   return (
     <LoadingContext.Provider value={value}>
       {children}

@@ -1,11 +1,8 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { LoadingContext } from "../contexts/LoaderBackdrop/LoaderBackdropContext";
 
 export const useLoaderBackdrop = () => {
-  const [isLoading, setIsLoading] = useState(false);
-
-  const setLoading = (loading: boolean) => {
-    setIsLoading(loading);
-  };
+  const { isLoading, setLoading } = useContext(LoadingContext);
 
   return { isLoading, setLoading };
 };

@@ -18,14 +18,19 @@ import {
 } from "./CartForm/schema";
 import { ZodError } from "zod";
 import { getErrorValidation } from "../../data/services/getErrorValidations";
+import { useLoaderBackdrop } from "../../data/hooks/useLoaderBackdrop";
+import { useNavigate } from "react-router-dom";
 
 export const Cart = () => {
+  const { setLoading } = useLoaderBackdrop();
+  const navigate = useNavigate();
   const {
     shoppingCartCoffes,
     coffeTotalPrice,
     incrementCoffeToCart,
     decrementCoffeToCart,
     removeCoffeeFromCart,
+    setConfirmedOrderData,
   } = useContext(CoffeContext);
 
   const newOrderForm = useForm<NewOrderDetailsFormData>({
@@ -43,11 +48,17 @@ export const Cart = () => {
   const { handleSubmit } = newOrderForm;
 
   const handleSubmitOrder = async (data: NewOrderDetailsFormData) => {
+    setLoading(true);
     try {
-      console.log(data);
       data.shoppingCartCoffes = shoppingCartCoffes;
 
       newCartOrderDetailsFormSchema.parse(data);
+
+      setConfirmedOrderData(data);
+
+      await new Promise((resolve) => setTimeout(resolve, 5000));
+      navigate("/confirmed-order");
+      setLoading(false);
     } catch (error) {
       if (error instanceof ZodError) getErrorValidation(error);
     }
