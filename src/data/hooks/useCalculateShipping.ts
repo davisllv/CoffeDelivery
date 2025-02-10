@@ -42,18 +42,18 @@ export const useCalculateShipping = () => {
       {
         params: {
           key: apiKey,
-          travelMode: "car", // Modo de transporte (carro)
+          travelMode: "car",
         },
       }
     );
 
-    const rota = response.data.routes[0];
-    const distancia = rota.summary.lengthInMeters / 1000;
-    const tempo = rota.summary.travelTimeInSeconds;
+    const route = response.data.routes[0];
+    const distance = route.summary.lengthInMeters / 1000;
+    const tempo = route.summary.travelTimeInSeconds;
 
-    const tempoMinutos = Math.round(tempo / 60);
+    const expendedTime = Math.round(tempo / 60);
 
-    return { distancia, tempo: tempoMinutos };
+    return { distance, expendedTime };
   };
 
   const calculateShipping = async (cepDestino: string) => {
@@ -61,17 +61,17 @@ export const useCalculateShipping = () => {
       const { lat: destinoLat, lon: destinoLon } =
         await obtainCordinatesWithZipCode(cepDestino);
 
-      const { distancia, tempo } = await calculateDistanceAndTime(
+      const { distance, expendedTime } = await calculateDistanceAndTime(
         origemLat,
         origemLon,
         destinoLat,
         destinoLon
       );
 
-      const valorFrete = calculateShippingPrice(distancia);
+      const shippingValue = calculateShippingPrice(distance);
 
-      setShippingPrice(valorFrete);
-      setShippingTime(tempo);
+      setShippingPrice(shippingValue);
+      setShippingTime(expendedTime);
     } catch (error) {
       if (error instanceof Error)
         toast.error(
@@ -80,9 +80,9 @@ export const useCalculateShipping = () => {
     }
   };
 
-  const calculateShippingPrice = (distancia: number) => {
-    const valorPorKm = 2.5;
-    return parseFloat((distancia * valorPorKm).toFixed(2));
+  const calculateShippingPrice = (distance: number) => {
+    const valuePerKm = 2.5;
+    return parseFloat((distance * valuePerKm).toFixed(2));
   };
 
   return { calculateShipping };
