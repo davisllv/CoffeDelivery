@@ -1,36 +1,43 @@
-import { useState } from "react";
+import { forwardRef } from "react";
 import { InputContainer, InputContainerProps } from "../InputContainer";
 import "./styles.css";
 
-export const InputCep = ({ ...rest }: InputContainerProps) => {
-  const [cep, setCep] = useState<string>("");
+export const InputCep = forwardRef<HTMLInputElement, InputContainerProps>(
+  ({ onChange, ...rest }: InputContainerProps, ref) => {
+    const formatCep = (value: string): string => {
+      const numericValue = value.replace(/\D/g, ""); // Remove não numéricos
 
-  const formatCep = (value: string): string => {
-    const numericValue = value.replace(/\D/g, "");
+      const truncatedValue = numericValue.slice(0, 8); // Máximo 8 números
 
-    const truncatedValue = numericValue.slice(0, 8);
+      if (truncatedValue.length > 5) {
+        return `${truncatedValue.slice(0, 5)}-${truncatedValue.slice(5)}`;
+      }
 
-    if (truncatedValue.length > 5) {
-      return `${truncatedValue.slice(0, 5)}-${truncatedValue.slice(5)}`;
-    }
+      return truncatedValue;
+    };
 
-    return truncatedValue;
-  };
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const formattedCep = formatCep(event.target.value);
 
-  // Função para lidar com a mudança no input
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const formattedCep = formatCep(event.target.value);
-    setCep(formattedCep);
-  };
-  return (
-    <InputContainer
-      type="text"
-      id="cep"
-      name="cep"
-      value={cep}
-      onChange={handleChange}
-      maxLength={9} // 8 dígitos + 1 traço
-      {...rest}
-    />
-  );
-};
+      // Chama o onChange do React Hook Form para atualizar o valor no formulário
+      if (onChange) {
+        onChange({
+          ...event,
+          target: { ...event.target, value: formattedCep },
+        });
+      }
+    };
+
+    return (
+      <InputContainer
+        type="text"
+        onChange={handleChange} // Agora o onChange sincroniza com o formulário
+        maxLength={9}
+        ref={ref}
+        {...rest}
+      />
+    );
+  }
+);
+
+InputCep.displayName = "InputCep";

@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes } from "react";
+import React, { InputHTMLAttributes, forwardRef } from "react";
 import { Input, InputMainContainer } from "./styles";
 
 export interface InputContainerProps
@@ -7,15 +7,15 @@ export interface InputContainerProps
   required?: boolean;
 }
 
-export const InputContainer: React.FC<InputContainerProps> = ({
-  size,
-  required = true,
-  ...rest
-}) => {
-  return (
-    <InputMainContainer $size={size}>
-      <Input {...rest} />
-      {!required && <span className="input-extra-text">Opcional</span>}
-    </InputMainContainer>
-  );
-};
+export const InputContainer = forwardRef<HTMLInputElement, InputContainerProps>(
+  ({ size, required = true, ...rest }, ref) => {
+    return (
+      <InputMainContainer $size={size}>
+        <Input {...rest} ref={ref} />
+        {!required && <span className="input-extra-text">Opcional</span>}
+      </InputMainContainer>
+    );
+  }
+);
+
+InputContainer.displayName = "InputContainer";
