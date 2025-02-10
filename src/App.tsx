@@ -5,6 +5,7 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./ui/styles/globalStyles";
 import { CoffeContextProvider } from "./data/contexts/CoffeShop/CoffeShopContextProvider";
 import { LoadingProvider } from "./data/contexts/LoaderBackdrop/LoaderBackdropContextProvider";
+import { ToastContainer } from "react-toastify";
 
 export function App() {
   return (
@@ -18,6 +19,7 @@ export function App() {
       </BrowserRouter>
 
       <GlobalStyles />
+      <ToastContainer />
     </ThemeProvider>
   );
 }
