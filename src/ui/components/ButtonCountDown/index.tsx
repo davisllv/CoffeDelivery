@@ -14,12 +14,12 @@ export const ButtonCountDown = ({
 }: IButtonCountDownProps) => {
   return (
     <ButtonCountDownElements>
-      <button onClick={onDecrement}>
+      <button type="button" onClick={onDecrement}>
         <Minus />
       </button>
 
       <span>{count}</span>
-      <button onClick={onIncrement}>
+      <button type="button" onClick={onIncrement}>
         <Plus />
       </button>
     </ButtonCountDownElements>

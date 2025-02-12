@@ -100,6 +100,7 @@ export const Cart = () => {
                           />
 
                           <Button
+                            type="button"
                             onClick={() => removeCoffeeFromCart(coffe.id)}
                             icon={<Trash size={16} />}
                           >

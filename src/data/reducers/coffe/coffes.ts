@@ -38,8 +38,13 @@ export function CoffeReducers(state: ICoffesStates, action: ICoffesAction) {
       });
     }
     case ActionTypesEnum.RESET_COFFE_AMOUNT: {
+      const findedIndex = state.coffees.findIndex(
+        (coffe) => coffe.id === action.payload.coffeId
+      );
+
+      if (findedIndex < 0) return state;
       return produce(state, (draft) => {
-        draft.coffees.forEach((coffe) => (coffe.quantity = 1));
+        draft.coffees[findedIndex].quantity = 1;
       });
     }
 
